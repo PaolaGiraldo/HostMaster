@@ -5,7 +5,7 @@ namespace HostMaster.Shared.Entities;
 
 public class Payment
 {
-    public int PaymentId { get; set; }
+    public int Id { get; set; }
     public decimal Amount { get; set; }
     public DateTime PaymentDate { get; set; }
 

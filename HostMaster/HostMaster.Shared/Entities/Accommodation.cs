@@ -5,7 +5,7 @@ namespace HostMaster.Shared.Entities;
 
 public class Accommodation
 {
-    public int AccommodationId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string Name { get; set; } = null!;
@@ -26,4 +26,9 @@ public class Accommodation
 
     public ICollection<Employee>? Employees { get; set; }
     public ICollection<Reservation>? Reservations { get; set; }
+
+    public static implicit operator Accommodation(Room v)
+    {
+        throw new NotImplementedException();
+    }
 }

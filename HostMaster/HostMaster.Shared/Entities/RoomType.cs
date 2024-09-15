@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class RoomType
 {
-    public int RoomTypeId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string TypeName { get; set; } = null!;
@@ -14,4 +14,9 @@ public class RoomType
 
     // Relationships
     public ICollection<Room>? Rooms { get; set; }
+
+    public static implicit operator RoomType(Room v)
+    {
+        throw new NotImplementedException();
+    }
 }

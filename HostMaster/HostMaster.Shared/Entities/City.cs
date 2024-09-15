@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class City
 {
-    public int CityId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string Name { get; set; } = null!;

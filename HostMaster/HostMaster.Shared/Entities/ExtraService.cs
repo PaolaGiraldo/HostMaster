@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class ExtraService
 {
-    public int ExtraServiceId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string ServiceName { get; set; } = null!;

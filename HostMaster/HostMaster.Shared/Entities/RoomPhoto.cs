@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class RoomPhoto
 {
-    public int RoomPhotoId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string RoomPhotoName { get; set; } = null!;

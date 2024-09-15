@@ -1,9 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using HostMaster.Shared.Entities;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace HostMaster.Shared.Entities;
+namespace HostMaster.Shared.DTOs;
 
-public class Room
+public class RoomCreateDTO
 {
     public int Id { get; set; }
 
@@ -25,14 +30,5 @@ public class Room
     public RoomType RoomType { get; set; } = null!;
 
     // Relationships
-    public ICollection<Reservation>? Reservations { get; set; }
-
-    public ICollection<RoomInventoryItem>? RoomInventoryItems { get; set; }
-
     public ICollection<RoomPhoto>? Photos { get; set; }
-
-    public static implicit operator Room(List<Room> v)
-    {
-        throw new NotImplementedException();
-    }
 }

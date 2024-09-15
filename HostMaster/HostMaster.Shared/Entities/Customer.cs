@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class Customer
 {
-    public int CustomerId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string FirstName { get; set; } = null!;

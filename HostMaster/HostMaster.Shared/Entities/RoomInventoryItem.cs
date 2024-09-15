@@ -4,7 +4,7 @@ namespace HostMaster.Shared.Entities;
 
 public class RoomInventoryItem
 {
-    public int RoomInventoryItemId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string ItemName { get; set; } = null!;
