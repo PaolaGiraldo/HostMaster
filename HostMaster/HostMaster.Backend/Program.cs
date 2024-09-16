@@ -25,6 +25,9 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IRoomsRepository, RoomsRepository>();
 builder.Services.AddScoped<IRoomsUnitOfWork, RoomsUnitOfWork>();
 
+builder.Services.AddScoped<IRoomPhotosRepository, RoomPhotosRepository>();
+builder.Services.AddScoped<IRoomPhotosUnitOfWork, RoomPhotosUnitOfWork>();
+
 var app = builder.Build();
 SeedData(app);
 

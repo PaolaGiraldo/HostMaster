@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HostMaster.Shared.DTOs
+namespace HostMaster.Shared.DTOs;
+
+public class RoomPhotoCreateDTO
 {
-    internal class RoomPhotoCreateDTO
-    {
-        [Required]
-        public string RoomPhotoName { get; set; } = null!;
-    }
+    [Required]
+    public string RoomPhotoName { get; set; } = null!;
+
+    [Required]
+    public int RoomId { get; set; }
 }
