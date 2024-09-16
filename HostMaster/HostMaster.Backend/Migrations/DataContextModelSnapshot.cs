@@ -64,7 +64,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Accommodation");
+                    b.ToTable("Accommodations");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.City", b =>
@@ -86,7 +86,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.Country", b =>
@@ -103,7 +103,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Country");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.Customer", b =>
@@ -132,7 +132,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.Employee", b =>
@@ -170,7 +170,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("AccommodationId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.ExtraService", b =>
@@ -190,7 +190,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExtraService");
+                    b.ToTable("ExtraServices");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.Payment", b =>
@@ -218,7 +218,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("ReservationId");
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.Reservation", b =>
@@ -312,7 +312,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomInventoryItem");
+                    b.ToTable("RoomInventoryItems");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.RoomPhoto", b =>
@@ -334,7 +334,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomPhoto");
+                    b.ToTable("RoomPhotos");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.RoomType", b =>
@@ -355,7 +355,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomType");
+                    b.ToTable("RoomTypes");
                 });
 
             modelBuilder.Entity("HostMaster.Shared.Entities.State", b =>
@@ -377,7 +377,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("State");
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("ReservationRoom", b =>

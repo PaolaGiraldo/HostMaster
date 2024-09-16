@@ -72,12 +72,6 @@ public class RoomsController : GenericController<Room>
         return BadRequest();
     }
 
-    [HttpGet("combo")]
-    public async Task<IActionResult> GetComboAsync()
-    {
-        return Ok(await _roomsUnitOfWork.GetComboAsync());
-    }
-
     [HttpGet("avaliable")]
     public async Task<IActionResult> GetAvailableRoomsAsync()
     {

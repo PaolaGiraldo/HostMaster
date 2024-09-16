@@ -66,18 +66,21 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
     public override async Task<ActionResponse<IEnumerable<Room>>> GetAsync(PaginationDTO pagination)
     {
         var queryable = _context.Rooms
-            .Include(x => x.RoomNumber)
+            .Include(x => x.RoomType)
+            .Include(x => x.Photos)
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(pagination.Filter))
         {
-            queryable = queryable.Where(x => x.RoomNumber.ToLower().Contains(pagination.Filter.ToLower()));
+            queryable = queryable.Where(x => x.RoomNumber.ToLower().Contains(pagination.Filter.ToLower())
+            && x.AccommodationId == pagination.Id);
         }
 
         return new ActionResponse<IEnumerable<Room>>
         {
             WasSuccess = true,
             Result = await queryable
+                .Where(x => x.AccommodationId == pagination.Id)
                 .OrderBy(x => x.RoomNumber)
                 .Paginate(pagination)
                 .ToListAsync()
@@ -112,7 +115,7 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
 
     public async Task<ActionResponse<Room>> AddAsync(RoomCreateDTO roomCreateDTO)
     {
-        var accomodation = await _context.Rooms.FindAsync(roomCreateDTO.AccommodationId);
+        var accomodation = await _context.Accommodations.FindAsync(roomCreateDTO.AccommodationId);
         if (accomodation == null)
         {
             return new ActionResponse<Room>
@@ -122,7 +125,7 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
             };
         }
 
-        var roomType = await _context.Rooms.FindAsync(roomCreateDTO.RoomTypeId);
+        var roomType = await _context.RoomTypes.FindAsync(roomCreateDTO.RoomTypeId);
         if (roomType == null)
         {
             return new ActionResponse<Room>

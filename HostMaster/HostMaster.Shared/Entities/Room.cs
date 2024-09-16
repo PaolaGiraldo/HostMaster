@@ -16,13 +16,11 @@ public class Room
     // Foreign keys
     public int AccommodationId { get; set; }
 
-    [Required]
-    public Accommodation Accommodation { get; set; } = null!;
+    public Accommodation? Accommodation { get; set; }
 
     public int RoomTypeId { get; set; }
 
-    [Required]
-    public RoomType RoomType { get; set; } = null!;
+    public RoomType? RoomType { get; set; }
 
     // Relationships
     public ICollection<Reservation>? Reservations { get; set; }
@@ -30,9 +28,4 @@ public class Room
     public ICollection<RoomInventoryItem>? RoomInventoryItems { get; set; }
 
     public ICollection<RoomPhoto>? Photos { get; set; }
-
-    public static implicit operator Room(List<Room> v)
-    {
-        throw new NotImplementedException();
-    }
 }

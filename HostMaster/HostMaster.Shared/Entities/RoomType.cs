@@ -14,9 +14,4 @@ public class RoomType
 
     // Relationships
     public ICollection<Room>? Rooms { get; set; }
-
-    public static implicit operator RoomType(Room v)
-    {
-        throw new NotImplementedException();
-    }
 }

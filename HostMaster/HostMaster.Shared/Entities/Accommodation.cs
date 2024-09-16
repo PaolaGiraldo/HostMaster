@@ -26,9 +26,4 @@ public class Accommodation
 
     public ICollection<Employee>? Employees { get; set; }
     public ICollection<Reservation>? Reservations { get; set; }
-
-    public static implicit operator Accommodation(Room v)
-    {
-        throw new NotImplementedException();
-    }
 }

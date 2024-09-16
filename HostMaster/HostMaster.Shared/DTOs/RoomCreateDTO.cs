@@ -21,13 +21,11 @@ public class RoomCreateDTO
     // Foreign keys
     public int AccommodationId { get; set; }
 
-    [Required]
-    public Accommodation Accommodation { get; set; } = null!;
+    public Accommodation? Accommodation { get; set; }
 
     public int RoomTypeId { get; set; }
 
-    [Required]
-    public RoomType RoomType { get; set; } = null!;
+    public RoomType? RoomType { get; set; }
 
     // Relationships
     public ICollection<RoomPhoto>? Photos { get; set; }

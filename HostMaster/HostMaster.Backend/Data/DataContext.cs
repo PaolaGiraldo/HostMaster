@@ -9,8 +9,19 @@ public class DataContext : DbContext
     {
     }
 
+    public DbSet<Accommodation> Accommodations { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<ExtraService> ExtraServices { get; set; }
+    public DbSet<Payment> Payments { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Room> Rooms { get; set; }
+    public DbSet<RoomInventoryItem> RoomInventoryItems { get; set; }
+    public DbSet<RoomPhoto> RoomPhotos { get; set; }
+    public DbSet<RoomType> RoomTypes { get; set; }
+    public DbSet<State> States { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

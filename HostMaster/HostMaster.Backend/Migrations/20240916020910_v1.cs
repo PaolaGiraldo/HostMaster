@@ -12,7 +12,7 @@ namespace HostMaster.Backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Country",
+                name: "Countries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,11 +21,11 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Country", x => x.Id);
+                    table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Customer",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -37,11 +37,11 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExtraService",
+                name: "ExtraServices",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -51,11 +51,11 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExtraService", x => x.Id);
+                    table.PrimaryKey("PK_ExtraServices", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomType",
+                name: "RoomTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -65,11 +65,11 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomType", x => x.Id);
+                    table.PrimaryKey("PK_RoomTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "State",
+                name: "States",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -79,17 +79,17 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_State", x => x.Id);
+                    table.PrimaryKey("PK_States", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_State_Country_CountryId",
+                        name: "FK_States_Countries_CountryId",
                         column: x => x.CountryId,
-                        principalTable: "Country",
+                        principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "City",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -99,17 +99,17 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_City", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_City_State_StateId",
+                        name: "FK_Cities_States_StateId",
                         column: x => x.StateId,
-                        principalTable: "State",
+                        principalTable: "States",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Accommodation",
+                name: "Accommodations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -121,17 +121,17 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Accommodation", x => x.Id);
+                    table.PrimaryKey("PK_Accommodations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Accommodation_City_CityId",
+                        name: "FK_Accommodations_Cities_CityId",
                         column: x => x.CityId,
-                        principalTable: "City",
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employee",
+                name: "Employees",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -145,11 +145,11 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employee", x => x.Id);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Employee_Accommodation_AccommodationId",
+                        name: "FK_Employees_Accommodations_AccommodationId",
                         column: x => x.AccommodationId,
-                        principalTable: "Accommodation",
+                        principalTable: "Accommodations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -170,15 +170,15 @@ namespace HostMaster.Backend.Migrations
                 {
                     table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reservations_Accommodation_AccommodationId",
+                        name: "FK_Reservations_Accommodations_AccommodationId",
                         column: x => x.AccommodationId,
-                        principalTable: "Accommodation",
+                        principalTable: "Accommodations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Reservations_Customer_CustomerId",
+                        name: "FK_Reservations_Customers_CustomerId",
                         column: x => x.CustomerId,
-                        principalTable: "Customer",
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -199,15 +199,15 @@ namespace HostMaster.Backend.Migrations
                 {
                     table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Rooms_Accommodation_AccommodationId",
+                        name: "FK_Rooms_Accommodations_AccommodationId",
                         column: x => x.AccommodationId,
-                        principalTable: "Accommodation",
+                        principalTable: "Accommodations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Rooms_RoomType_RoomTypeId",
+                        name: "FK_Rooms_RoomTypes_RoomTypeId",
                         column: x => x.RoomTypeId,
-                        principalTable: "RoomType",
+                        principalTable: "RoomTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -223,9 +223,9 @@ namespace HostMaster.Backend.Migrations
                 {
                     table.PrimaryKey("PK_ExtraServiceReservation", x => new { x.ExtraServicesId, x.ReservationsId });
                     table.ForeignKey(
-                        name: "FK_ExtraServiceReservation_ExtraService_ExtraServicesId",
+                        name: "FK_ExtraServiceReservation_ExtraServices_ExtraServicesId",
                         column: x => x.ExtraServicesId,
-                        principalTable: "ExtraService",
+                        principalTable: "ExtraServices",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -237,7 +237,7 @@ namespace HostMaster.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Payment",
+                name: "Payments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -249,9 +249,9 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Payment", x => x.Id);
+                    table.PrimaryKey("PK_Payments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Payment_Reservations_ReservationId",
+                        name: "FK_Payments_Reservations_ReservationId",
                         column: x => x.ReservationId,
                         principalTable: "Reservations",
                         principalColumn: "Id",
@@ -283,7 +283,7 @@ namespace HostMaster.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomInventoryItem",
+                name: "RoomInventoryItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -295,9 +295,9 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomInventoryItem", x => x.Id);
+                    table.PrimaryKey("PK_RoomInventoryItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoomInventoryItem_Rooms_RoomId",
+                        name: "FK_RoomInventoryItems_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id",
@@ -305,7 +305,7 @@ namespace HostMaster.Backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomPhoto",
+                name: "RoomPhotos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -315,9 +315,9 @@ namespace HostMaster.Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomPhoto", x => x.Id);
+                    table.PrimaryKey("PK_RoomPhotos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoomPhoto_Rooms_RoomId",
+                        name: "FK_RoomPhotos_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id",
@@ -325,18 +325,18 @@ namespace HostMaster.Backend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accommodation_CityId",
-                table: "Accommodation",
+                name: "IX_Accommodations_CityId",
+                table: "Accommodations",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_City_StateId",
-                table: "City",
+                name: "IX_Cities_StateId",
+                table: "Cities",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_AccommodationId",
-                table: "Employee",
+                name: "IX_Employees_AccommodationId",
+                table: "Employees",
                 column: "AccommodationId");
 
             migrationBuilder.CreateIndex(
@@ -345,8 +345,8 @@ namespace HostMaster.Backend.Migrations
                 column: "ReservationsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payment_ReservationId",
-                table: "Payment",
+                name: "IX_Payments_ReservationId",
+                table: "Payments",
                 column: "ReservationId");
 
             migrationBuilder.CreateIndex(
@@ -365,13 +365,13 @@ namespace HostMaster.Backend.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomInventoryItem_RoomId",
-                table: "RoomInventoryItem",
+                name: "IX_RoomInventoryItems_RoomId",
+                table: "RoomInventoryItems",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomPhoto_RoomId",
-                table: "RoomPhoto",
+                name: "IX_RoomPhotos_RoomId",
+                table: "RoomPhotos",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
@@ -385,8 +385,8 @@ namespace HostMaster.Backend.Migrations
                 column: "RoomTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_State_CountryId",
-                table: "State",
+                name: "IX_States_CountryId",
+                table: "States",
                 column: "CountryId");
         }
 
@@ -394,25 +394,25 @@ namespace HostMaster.Backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Employee");
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "ExtraServiceReservation");
 
             migrationBuilder.DropTable(
-                name: "Payment");
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "ReservationRoom");
 
             migrationBuilder.DropTable(
-                name: "RoomInventoryItem");
+                name: "RoomInventoryItems");
 
             migrationBuilder.DropTable(
-                name: "RoomPhoto");
+                name: "RoomPhotos");
 
             migrationBuilder.DropTable(
-                name: "ExtraService");
+                name: "ExtraServices");
 
             migrationBuilder.DropTable(
                 name: "Reservations");
@@ -421,22 +421,22 @@ namespace HostMaster.Backend.Migrations
                 name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Accommodation");
+                name: "Accommodations");
 
             migrationBuilder.DropTable(
-                name: "RoomType");
+                name: "RoomTypes");
 
             migrationBuilder.DropTable(
-                name: "City");
+                name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "State");
+                name: "States");
 
             migrationBuilder.DropTable(
-                name: "Country");
+                name: "Countries");
         }
     }
 }
