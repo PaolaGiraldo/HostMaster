@@ -28,7 +28,7 @@ public class RoomPhotosController : GenericController<RoomPhoto>
         return BadRequest(action.Message);
     }
 
-    [HttpGet("by-room/{roomId}")]
+    [HttpGet("by-roomId/{roomId}")]
     public async Task<IActionResult> GetByAccommodationIdAsync(int roomId)
     {
         var response = await _roomPhotosUnitOfWork.GetByRoomIdAsync(roomId);
@@ -38,4 +38,20 @@ public class RoomPhotosController : GenericController<RoomPhoto>
         }
         return NotFound(response.Message);
     }
+
+    //hide resource inhereted from genericController
+
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public override Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+    {
+        return base.GetAsync(pagination);
+    }
+
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public override Task<IActionResult> GetAsync(int id)
+    {
+        return base.GetAsync(id);
+    }
+
+
 }
