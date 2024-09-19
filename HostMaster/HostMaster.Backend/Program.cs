@@ -28,6 +28,9 @@ builder.Services.AddScoped<IRoomsUnitOfWork, RoomsUnitOfWork>();
 builder.Services.AddScoped<IRoomPhotosRepository, RoomPhotosRepository>();
 builder.Services.AddScoped<IRoomPhotosUnitOfWork, RoomPhotosUnitOfWork>();
 
+builder.Services.AddScoped<IRoomTypesRepository, RoomTypesRepository>();
+builder.Services.AddScoped<IRoomTypesUnitOfWork, RoomTypesUnitOfWork>();
+
 var app = builder.Build();
 SeedData(app);
 

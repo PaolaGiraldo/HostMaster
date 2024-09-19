@@ -1,0 +1,52 @@
+﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudTextField Label="@Localizer["RoomNumber"]"
+                  @bind-Value="@RoomCreateDTO.RoomNumber"
+                  For="@(() => RoomCreateDTO.RoomNumber)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Price"]"
+                  @bind-Value="@RoomCreateDTO.Price"
+                  For="@(() => RoomCreateDTO.Price)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["IsAvailable"]"
+                  @bind-Value="@RoomCreateDTO.Price"
+                  For="@(() => RoomCreateDTO.Price)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["AccommodationId"]"
+                  @bind-Value="@RoomCreateDTO.AccommodationId"
+                  For="@(() => RoomCreateDTO.AccommodationId)"
+                  Class="mb-4" />
+
+    <MudAutocomplete T="RoomType"
+                     Label=@Localizer["RoomType"]
+                     Placeholder=@Localizer["SelectARoomType"]
+                     SearchFunc="SearchRoomType"
+                     Value="selectedRoomType"
+                     ValueChanged="RoomTypeChanged"
+                     ToStringFunc="@(e=> e==null?null : $"{e.TypeName}")">
+        <ItemTemplate Context="itemContext">
+            @itemContext.TypeName
+        </ItemTemplate>
+    </MudAutocomplete>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>
+
