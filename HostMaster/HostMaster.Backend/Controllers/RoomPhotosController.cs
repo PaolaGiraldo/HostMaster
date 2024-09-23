@@ -63,4 +63,15 @@ public class RoomPhotosController : GenericController<RoomPhoto>
         }
         return BadRequest(action.Message);
     }
+
+    [HttpDelete("by-roomId/{roomId}")]
+    public async Task<IActionResult> DeleteByRoomIdAsync(int roomId)
+    {
+        var response = await _roomPhotosUnitOfWork.DeleteByRoomIdAsync(roomId);
+        if (response.WasSuccess)
+        {
+            return Ok(response.Result);
+        }
+        return NotFound(response.Message);
+    }
 }

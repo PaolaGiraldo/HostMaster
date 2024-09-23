@@ -68,7 +68,7 @@ public partial class RoomForm
     private void OnImagesSelected(List<string> imagesBase64)
 
     {
-        Console.WriteLine("OnImagesSelected");
+        //Console.WriteLine("OnImagesSelected");
 
         if (imagesBase64 != null && imagesBase64.Count > 0)
         {
@@ -80,13 +80,13 @@ public partial class RoomForm
                     RoomPhotoName = base64Image, // Asignar la imagen Base64 a RoomPhotoName
                     RoomId = RoomCreateDTO.Id,
                 };
-                Console.WriteLine(base64Image);
-                Console.WriteLine("OnImagesSelected cilcle");
+                // Console.WriteLine(base64Image);
+                // Console.WriteLine("OnImagesSelected cilcle");
                 // Agregar la nueva instancia de Photo a la colección Photos
 
                 RoomPhotoCreateDTO.Add(roomPhoto);
 
-                Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+               // Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
             }
         }
     }

@@ -7,6 +7,7 @@ using HostMaster.Shared.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Utilities.IO;
+using System;
 using System.Diagnostics;
 
 namespace HostMaster.Backend.Repositories.Implementations;
@@ -37,7 +38,6 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
 
         var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
         roomPhoto.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
-
 
         _context.Add(roomPhoto);
 
@@ -124,5 +124,34 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
                 Result = roomPhoto
             };
         }
+    }
+
+    async Task<ActionResponse<RoomPhoto>> IRoomPhotosRepository.DeleteByRoomIdAsync(int roomId)
+    {
+        var photosToDelete = await _context.RoomPhotos
+                                   .Where(photo => photo.RoomId == roomId)
+                                   .ToListAsync();
+
+        if (photosToDelete == null || !photosToDelete.Any())
+        {
+            return new ActionResponse<RoomPhoto>
+            {
+                WasSuccess = true,
+                Message = "Photos not found"
+            };
+        }
+
+        _context.RoomPhotos.RemoveRange(photosToDelete);
+        await _context.SaveChangesAsync();
+
+        foreach (var photo in photosToDelete)
+        {
+            await _fileStorage.RemoveFileAsync(photo.RoomPhotoName, "teams");
+        }
+
+        return new ActionResponse<RoomPhoto>
+        {
+            WasSuccess = true,
+        };
     }
 }

@@ -33,13 +33,13 @@ public partial class MultipleInputImg
         imagesBase64.Clear();   // Limpiar la lista de imágenes previas
 
         var maxAllowedSize = 5 * 1024 * 1024; // Aumentar el tamaño máximo permitido a 5 MB (por ejemplo)
-        Console.WriteLine("MultipleInputMessage 1");
+                                              // Console.WriteLine("MultipleInputMessage 1");
         foreach (var file in e.GetMultipleFiles())  // Iterar sobre los archivos seleccionados
         {
-            Console.WriteLine("MultipleInputMessage 2");
+            //   Console.WriteLine("MultipleInputMessage 2");
             try
             {
-                Console.WriteLine("MultipleInputMessage 3");
+                //  Console.WriteLine("MultipleInputMessage 3");
                 fileNames.Add(file.Name);               // Agregar el nombre del archivo
 
                 // Verificar que el archivo no exceda el tamaño permitido
@@ -48,17 +48,17 @@ public partial class MultipleInputImg
                     Console.WriteLine($"El archivo {file.Name} excede el tamaño máximo permitido de 5 MB.");
                     continue; // Saltar este archivo si excede el tamaño permitido
                 }
-                Console.WriteLine("MultipleInputMessage 4");
+                // Console.WriteLine("MultipleInputMessage 4");
                 using var stream = file.OpenReadStream(maxAllowedSize);
                 using var memoryStream = new MemoryStream();
-                Console.WriteLine("MultipleInputMessage 5");
+                //  Console.WriteLine("MultipleInputMessage 5");
                 // Copiar el contenido del archivo en el MemoryStream
                 await stream.CopyToAsync(memoryStream);
                 byte[] arrBytes = memoryStream.ToArray();
-                Console.WriteLine("MultipleInputMessage 6");
+                //  Console.WriteLine("MultipleInputMessage 6");
                 string base64String = Convert.ToBase64String(arrBytes); // Convertir a Base64
                 imagesBase64.Add(base64String);         // Agregar a la lista de imágenes Base64
-                Console.WriteLine("MultipleInputMessage 7");
+                                                        //   Console.WriteLine("MultipleInputMessage 7");
             }
             catch (Exception ex)
             {

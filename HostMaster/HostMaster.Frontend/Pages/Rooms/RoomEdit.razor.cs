@@ -62,11 +62,11 @@ public partial class RoomEdit
 
     private async Task EditAsync()
     {
-        Console.WriteLine("EDIT ROOM");
-        Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+       // Console.WriteLine("EDIT ROOM");
+       // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
 
-        Console.WriteLine("ANTES DEL PUT");
-        Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+       // Console.WriteLine("ANTES DEL PUT");
+       // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
         var responseHttp = await Repository.PutAsync("api/rooms", roomCreateDTO);
 
         if (responseHttp.Error)
@@ -76,7 +76,16 @@ public partial class RoomEdit
             return;
         }
 
+        var responseHttp3 = await Repository.DeleteAsync($"api/roomphotos/by-roomId/{roomCreateDTO?.Id}");
+        if (responseHttp3.Error)
+        {
+            var mensajeError = await responseHttp3.GetErrorMessageAsync();
+            Snackbar.Add(Localizer[mensajeError!], Severity.Error);
+            return;
+        }
+
         foreach (var roomPhotoDTO in roomPhotoCreateDTO)
+
         {
             Console.WriteLine("EDIT PHOTO ROOM");
             Console.WriteLine(JsonSerializer.Serialize(roomPhotoDTO, new JsonSerializerOptions { WriteIndented = true }));
@@ -84,7 +93,7 @@ public partial class RoomEdit
             var responseHttp2 = await Repository.PostAsync("api/roomphotos/full", roomPhotoDTO);
             if (responseHttp2.Error)
             {
-                var mensajeError = await responseHttp.GetErrorMessageAsync();
+                var mensajeError = await responseHttp2.GetErrorMessageAsync();
                 Snackbar.Add(Localizer[mensajeError!], Severity.Error);
                 return;
             }

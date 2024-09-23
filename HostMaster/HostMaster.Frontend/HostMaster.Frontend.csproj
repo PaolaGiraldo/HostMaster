@@ -22,12 +22,17 @@
     <Folder Include="AuthenticationProviders\" />
     <Folder Include="Helpers\" />
     <Folder Include="Services\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HostMaster.Shared\HostMaster.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\NoImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

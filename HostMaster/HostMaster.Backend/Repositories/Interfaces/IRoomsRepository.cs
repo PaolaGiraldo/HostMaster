@@ -23,5 +23,6 @@ namespace HostMaster.Backend.Repositories.Interfaces
         Task<ActionResponse<Room>> AddAsync(RoomCreateDTO roomCreateDTO);
 
         Task<ActionResponse<Room>> UpdateAsync(RoomCreateDTO roomCreateDTO);
+
     }
 }
