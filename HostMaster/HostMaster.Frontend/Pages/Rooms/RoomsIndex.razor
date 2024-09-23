@@ -37,7 +37,17 @@ else
         <RowTemplate>
             <MudTd>@context.RoomNumber</MudTd>
             <MudTd>
-                <MudImage Src="hhh" Width="90" Height="60" />
+                @if (context.Photos != null && context.Photos.Any())
+                {
+                    @foreach (var photo in context.Photos)
+                    {
+                        <MudImage Src="@photo.RoomPhotoName" Width="90" Height="60" Style="margin-right: 10px;" />
+                    }
+                }
+                else
+                {
+                    <MudText>No images available</MudText>
+                }
             </MudTd>
             <MudTd>@context.RoomType!.TypeName</MudTd>
             <MudTd>

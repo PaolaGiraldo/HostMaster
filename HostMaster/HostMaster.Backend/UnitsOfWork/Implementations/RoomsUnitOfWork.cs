@@ -29,4 +29,6 @@ public class RoomsUnitOfWork : GenericUnitOfWork<Room>, IRoomsUnitOfWork
     public async Task<IEnumerable<Room>> GetComboAsync() => await _roomsRepository.GetComboAsync();
 
     public async Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination) => await _roomsRepository.GetTotalRecordsAsync(pagination);
+
+    public async Task<ActionResponse<Room>> UpdateAsync(RoomCreateDTO roomCreateDTO) => await _roomsRepository.UpdateAsync(roomCreateDTO);
 }

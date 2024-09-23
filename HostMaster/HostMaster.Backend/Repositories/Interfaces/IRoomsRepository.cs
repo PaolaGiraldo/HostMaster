@@ -20,6 +20,8 @@ namespace HostMaster.Backend.Repositories.Interfaces
 
         Task<IEnumerable<Room>> GetAvailableRoomsAsync();
 
-        Task<ActionResponse<Room>> AddAsync(RoomCreateDTO teamDTO);
+        Task<ActionResponse<Room>> AddAsync(RoomCreateDTO roomCreateDTO);
+
+        Task<ActionResponse<Room>> UpdateAsync(RoomCreateDTO roomCreateDTO);
     }
 }

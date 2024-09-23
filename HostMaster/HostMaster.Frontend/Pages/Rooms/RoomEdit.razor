@@ -1,3 +1,13 @@
-﻿<h3>RoomEdit</h3>
-
-
+﻿@using HostMaster.Frontend.Shared
+@if (roomCreateDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <RoomForm @ref="roomForm" RoomCreateDTO="roomCreateDTO" RoomPhotoCreateDTO="roomPhotoCreateDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

@@ -11,6 +11,7 @@ public partial class RoomCreate
 {
     private RoomForm? roomForm;
     private RoomCreateDTO roomCreateDTO = new();
+    private List<RoomPhotoCreateDTO> roomPhotoCreateDTO = new();
 
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;

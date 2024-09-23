@@ -7,6 +7,7 @@ using HostMaster.Shared.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Utilities.IO;
+using System.Diagnostics;
 
 namespace HostMaster.Backend.Repositories.Implementations;
 
@@ -14,20 +15,74 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
 {
     private readonly DataContext _context;
 
-    public RoomPhotosRepository(DataContext context) : base(context)
+    private readonly IFileStorage _fileStorage;
+
+    public RoomPhotosRepository(DataContext context, IFileStorage fileStorage) : base(context)
     {
         _context = context;
+
+        _fileStorage = fileStorage;
     }
 
     async Task<ActionResponse<RoomPhoto>> IRoomPhotosRepository.AddAsync(RoomPhotoCreateDTO roomPhotoCreateDTO)
     {
+        //var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
+        //roomPhotoCreateDTO.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "hostMaster");
+
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,
             RoomPhotoName = roomPhotoCreateDTO.RoomPhotoName,
         };
 
+        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
+        roomPhoto.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
+
+
         _context.Add(roomPhoto);
+
+        try
+        {
+            await _context.SaveChangesAsync();
+            return new ActionResponse<RoomPhoto>
+            {
+                WasSuccess = true,
+                Result = roomPhoto
+            };
+        }
+        catch (DbUpdateException)
+        {
+            return new ActionResponse<RoomPhoto>
+            {
+                WasSuccess = false,
+                Message = "ERR003"
+            };
+        }
+        catch (Exception exception)
+        {
+            return new ActionResponse<RoomPhoto>
+            {
+                WasSuccess = false,
+                Message = exception.Message
+            };
+        }
+    }
+
+    async Task<ActionResponse<RoomPhoto>> IRoomPhotosRepository.UpdateAsync(RoomPhotoCreateDTO roomPhotoCreateDTO)
+    {
+        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
+        roomPhotoCreateDTO.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "hostMaster");
+
+        Debug.WriteLine("BASE 64 FILE");
+        Debug.WriteLine(roomPhotoCreateDTO.RoomPhotoName);
+
+        var roomPhoto = new RoomPhoto
+        {
+            RoomId = roomPhotoCreateDTO.RoomId,
+            RoomPhotoName = roomPhotoCreateDTO.RoomPhotoName,
+        };
+
+        _context.Update(roomPhoto);
 
         try
         {

@@ -87,12 +87,12 @@ public partial class RoomsIndex
         };
     }
 
-     private async Task SetFilterValue(string value)
-     {
-         Filter = value;
-         await LoadTotalRecordsAsync();
-         await table.ReloadServerData();
-     }
+    private async Task SetFilterValue(string value)
+    {
+        Filter = value;
+        await LoadTotalRecordsAsync();
+        await table.ReloadServerData();
+    }
 
     private async Task ShowModalAsync(int id = 0, bool isEdit = false)
     {

@@ -1,0 +1,40 @@
+﻿<div class="mb-3">
+    <label class="form-label">@Label</label>
+    <div class="input-group">
+        <input type="text"
+               class="form-control"
+               placeholder="@Localizer["SelectFiles"]"
+               readonly="readonly"
+               value="@string.Join(", ", fileNames)" /> <!-- Mostrar nombres de archivos -->
+        <label class="input-group-btn">
+            <span class="btn btn-primary">
+                @Localizer["Search"]<InputFile OnChange="OnChange" class="d-none" accept=".jpg,.jpeg,.png" multiple />
+                <!-- Atributo "multiple" permite seleccionar varios archivos -->
+            </span>
+        </label>
+    </div>
+</div>
+
+<div>
+    @if (imagesBase64.Count > 0)
+    {
+        <div>
+            @foreach (var image in imagesBase64)
+            {
+                <div style="margin: 10px">
+                    <img src="data:image/jpeg;base64,@image" style="height:200px;" />
+                </div>
+            }
+        </div>
+    }
+
+    @if (ImageURL is not null && ImageURL.StartsWith("http"))
+    {
+        <div>
+            <div style="margin: 10px">
+                <img src="@ImageURL" style="height:200px;" />
+            </div>
+        </div>
+    }
+</div>
+

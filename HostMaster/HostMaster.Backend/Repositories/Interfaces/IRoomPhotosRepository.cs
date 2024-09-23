@@ -9,4 +9,6 @@ public interface IRoomPhotosRepository
     Task<ActionResponse<IEnumerable<RoomPhoto>>> GetByRoomIdAsync(int roomId);
 
     Task<ActionResponse<RoomPhoto>> AddAsync(RoomPhotoCreateDTO roomPhotoCreateDTO);
+
+    Task<ActionResponse<RoomPhoto>> UpdateAsync(RoomPhotoCreateDTO roomPhotoCreateDTO);
 }

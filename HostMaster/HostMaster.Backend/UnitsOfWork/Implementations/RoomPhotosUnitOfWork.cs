@@ -19,5 +19,7 @@ namespace HostMaster.Backend.UnitsOfWork.Implementations
         public async Task<ActionResponse<RoomPhoto>> AddAsync(RoomPhotoCreateDTO roomPhotoCreateDTO) => await _roomsPhotosRepository.AddAsync(roomPhotoCreateDTO);
 
         public async Task<ActionResponse<IEnumerable<RoomPhoto>>> GetByRoomIdAsync(int roomId) => await _roomsPhotosRepository.GetByRoomIdAsync(roomId);
+
+        public async Task<ActionResponse<RoomPhoto>> UpdateAsync(RoomPhotoCreateDTO roomPhotoCreateDTO) => await _roomsPhotosRepository.AddAsync(roomPhotoCreateDTO);
     }
 }

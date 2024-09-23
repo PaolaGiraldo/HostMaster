@@ -53,5 +53,14 @@ public class RoomPhotosController : GenericController<RoomPhoto>
         return base.GetAsync(id);
     }
 
-
+    [HttpPut("full")]
+    public async Task<IActionResult> PutAsync(RoomPhotoCreateDTO roomPhotoCreateDTO)
+    {
+        var action = await _roomPhotosUnitOfWork.UpdateAsync(roomPhotoCreateDTO);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest(action.Message);
+    }
 }

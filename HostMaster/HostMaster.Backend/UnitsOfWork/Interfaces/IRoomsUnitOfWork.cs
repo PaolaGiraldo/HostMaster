@@ -19,4 +19,6 @@ public interface IRoomsUnitOfWork
     Task<ActionResponse<int>> GetTotalRecordsAsync(PaginationDTO pagination);
 
     Task<IEnumerable<Room>> GetAvailableRoomsAsync();
+
+    Task<ActionResponse<Room>> UpdateAsync(RoomCreateDTO roomCreateDTO);
 }

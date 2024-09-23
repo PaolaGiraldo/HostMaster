@@ -77,4 +77,15 @@ public class RoomsController : GenericController<Room>
     {
         return Ok(await _roomsUnitOfWork.GetAvailableRoomsAsync());
     }
+
+    [HttpPut("full")]
+    public async Task<IActionResult> PutAsync(RoomCreateDTO roomCreateDTO)
+    {
+        var action = await _roomsUnitOfWork.UpdateAsync(roomCreateDTO);
+        if (action.WasSuccess)
+        {
+            return Ok(action.Result);
+        }
+        return BadRequest(action.Message);
+    }
 }
