@@ -13,6 +13,12 @@ public class Customer
     public string LastName { get; set; } = null!;
 
     [Required]
+    public string DocumentType { get; set; } = null!;
+
+    [Required]
+    public int DocumentNumber { get; set; }
+
+    [Required]
     public string Email { get; set; } = null!;
 
     [Required]

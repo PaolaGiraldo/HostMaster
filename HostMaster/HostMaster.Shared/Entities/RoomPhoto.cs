@@ -7,7 +7,7 @@ public class RoomPhoto
     public int Id { get; set; }
 
     [Required]
-    public string RoomPhotoName { get; set; } = null!;
+    public string RoomPhotoUrl { get; set; } = null!;
 
     // Foreign keys
 

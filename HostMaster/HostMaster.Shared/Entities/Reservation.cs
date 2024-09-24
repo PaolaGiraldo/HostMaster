@@ -10,11 +10,14 @@ public class Reservation
     public DateTime EndDate { get; set; }
     public int NumberOfGuests { get; set; }
 
-    // Foreign keys
-    // public int RoomId { get; set; }
+    [Required]
+    public string State { get; set; } = null!;
 
-    //[Required]
-    //public Room Room { get; set; } = null!;
+    //Foreign keys
+    public int RoomId { get; set; }
+
+    [Required]
+    public Room Room { get; set; } = null!;
 
     public int CustomerId { get; set; }
 

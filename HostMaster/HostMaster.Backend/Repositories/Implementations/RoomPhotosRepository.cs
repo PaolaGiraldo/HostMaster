@@ -33,11 +33,11 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,
-            RoomPhotoName = roomPhotoCreateDTO.RoomPhotoName,
+            RoomPhotoUrl = roomPhotoCreateDTO.RoomPhotoName,
         };
 
         var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
-        roomPhoto.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
+        roomPhoto.RoomPhotoUrl = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
 
         _context.Add(roomPhoto);
 
@@ -79,7 +79,7 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,
-            RoomPhotoName = roomPhotoCreateDTO.RoomPhotoName,
+            RoomPhotoUrl = roomPhotoCreateDTO.RoomPhotoName,
         };
 
         _context.Update(roomPhoto);

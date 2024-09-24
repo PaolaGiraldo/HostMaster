@@ -10,7 +10,6 @@ public class Room
     [Required]
     public string RoomNumber { get; set; } = null!;
 
-    public decimal Price { get; set; }
     public bool IsAvailable { get; set; }
 
     // Foreign keys

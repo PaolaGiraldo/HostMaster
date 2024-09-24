@@ -12,6 +12,10 @@ public class RoomType
     [Required]
     public string Description { get; set; } = null!;
 
+    public decimal Price { get; set; }
+
+    public int MaxGuests { get; set; }
+
     // Relationships
     public ICollection<Room>? Rooms { get; set; }
 }

@@ -15,7 +15,7 @@ INSERT [dbo].[Accommodations] ([Id], [Name], [Address], [PhoneNumber], [CityId])
 SET IDENTITY_INSERT [dbo].[Accommodations] OFF
 
 SET IDENTITY_INSERT [dbo].[Customers] ON 
-INSERT [dbo].[Customers] ([Id], [FirstName], [LastName], [Email], [PhoneNumber]) VALUES (1, N'Oliver Camilo',N'Prieto Garcia',N'caprirey4@gmail.com',N'3044315484')
+INSERT [dbo].[Customers] ([Id], [FirstName], [LastName], [DocumentType], [DocumentNumber], [Email], [PhoneNumber]) VALUES (1, N'Oliver Camilo',N'Prieto Garcia','CC',1234567,N'caprirey4@gmail.com',N'3044315484')
 SET IDENTITY_INSERT [dbo].[Customers] OFF
 
 SET IDENTITY_INSERT [dbo].[Employees] ON 
@@ -27,26 +27,26 @@ INSERT [dbo].[ExtraServices] ([Id], [ServiceName],[Price]) VALUES (1, N'Tour Ciu
 SET IDENTITY_INSERT [dbo].[ExtraServices] OFF
 
 SET IDENTITY_INSERT [dbo].[Reservations] ON 
-INSERT [dbo].[Reservations] ([Id], [StartDate],[EndDate],[NumberOfGuests],[CustomerId],[AccommodationId]) VALUES (1,'2024-09-15T14:30:00.1234567','2024-09-17T14:30:00.1234567',2,1,1)
+INSERT [dbo].[Reservations] ([Id], [StartDate],[EndDate],[NumberOfGuests],[CustomerId],[AccommodationId], [State]) VALUES (1,'2024-09-15T14:30:00.1234567','2024-09-17T14:30:00.1234567',2,1,1, 'Created')
 SET IDENTITY_INSERT [dbo].[Reservations] OFF
 
 INSERT INTO [dbo].[ExtraServiceReservation] ([ExtraServicesId], [ReservationsId]) VALUES (1, 1)
 
 SET IDENTITY_INSERT [dbo].[Payments] ON 
-INSERT [dbo].[Payments] ([Id], [Amount],[PaymentDate],[PaymentMethod],[ReservationId]) VALUES (1, 99.99,'2024-09-15T14:30:00.1234567',N'EFECTIVO',1)
+INSERT [dbo].[Payments] ([Id], [Amount],[Taxes],[PaymentDate],[PaymentMethod],[ReservationId]) VALUES (1, 99.99,19,'2024-09-15T14:30:00.1234567',N'EFECTIVO',1)
 SET IDENTITY_INSERT [dbo].[Payments] OFF
 
 SET IDENTITY_INSERT [dbo].[RoomTypes] ON 
-INSERT [dbo].[RoomTypes] ([Id], [TypeName],[Description]) VALUES (1, N'DOBLE',N'Posibilidad para 2 personas')
-INSERT [dbo].[RoomTypes] ([Id], [TypeName],[Description]) VALUES (2, N'DOBLE 2 CAMAS',N'Posibilidad para 4 personas')
+INSERT [dbo].[RoomTypes] ([Id], [TypeName],[Description],[Price],[MaxGuests]) VALUES (1, N'DOBLE',N'Posibilidad para 2 personas',80.00,2)
+INSERT [dbo].[RoomTypes] ([Id], [TypeName],[Description],[Price],[MaxGuests]) VALUES (2, N'DOBLE 2 CAMAS',N'Posibilidad para 4 personas',80.00,4)
 SET IDENTITY_INSERT [dbo].[RoomTypes] OFF
 
 SET IDENTITY_INSERT [dbo].[Rooms] ON 
-INSERT [dbo].[Rooms] ([Id], [RoomNumber],[Price],[IsAvailable],[AccommodationId],[RoomTypeId]) VALUES (1, N'101',80.00,1,1,1)
+INSERT [dbo].[Rooms] ([Id], [RoomNumber],[IsAvailable],[AccommodationId],[RoomTypeId]) VALUES (1, N'101',1,1,1)
 SET IDENTITY_INSERT [dbo].[Rooms] OFF
 
 SET IDENTITY_INSERT [dbo].[Rooms] ON 
-INSERT [dbo].[Rooms] ([Id], [RoomNumber],[Price],[IsAvailable],[AccommodationId],[RoomTypeId]) VALUES (2, N'201',80.00,1,1,2)
+INSERT [dbo].[Rooms] ([Id], [RoomNumber],[IsAvailable],[AccommodationId],[RoomTypeId]) VALUES (2, N'201',1,1,2)
 SET IDENTITY_INSERT [dbo].[Rooms] OFF
 
 SET IDENTITY_INSERT [dbo].[RoomInventoryItems] ON 
@@ -54,7 +54,7 @@ INSERT [dbo].[RoomInventoryItems] ([Id], [ItemName],[Quantity],[Condition],[Room
 SET IDENTITY_INSERT [dbo].[RoomInventoryItems] OFF
 
 SET IDENTITY_INSERT [dbo].[RoomPhotos] ON 
-INSERT [dbo].[RoomPhotos] ([Id], [RoomPhotoName],[RoomId]) VALUES (1, N'UUID-1',1)
+INSERT [dbo].[RoomPhotos] ([Id], [RoomPhotoUrl],[RoomId]) VALUES (1, N'UUID-1',1)
 SET IDENTITY_INSERT [dbo].[RoomPhotos] OFF
 
 INSERT INTO [dbo].[ReservationRoom] ([ReservationsId], [RoomsId]) VALUES (1, 1);

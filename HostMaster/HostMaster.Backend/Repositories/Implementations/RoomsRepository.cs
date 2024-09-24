@@ -140,37 +140,37 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
         var room = new Room
         {
             RoomNumber = roomCreateDTO.RoomNumber,
-            Price = roomCreateDTO.Price,
+            //Price = roomCreateDTO.Price,
             IsAvailable = roomCreateDTO.IsAvailable,
             Accommodation = accomodation,
             RoomType = roomType,
         };
 
-      /*  if (roomCreateDTO.Photos != null && roomCreateDTO.Photos.Any())
-        {
-            foreach (var photo in roomCreateDTO.Photos)
-            {
-                // Procesar y cambiar el nombre de la foto (RoomPhotoName)
-                string originalName = photo.RoomPhotoName;
+        /*  if (roomCreateDTO.Photos != null && roomCreateDTO.Photos.Any())
+          {
+              foreach (var photo in roomCreateDTO.Photos)
+              {
+                  // Procesar y cambiar el nombre de la foto (RoomPhotoName)
+                  string originalName = photo.RoomPhotoName;
 
-                var imageBase64 = Convert.FromBase64String(originalName);
+                  var imageBase64 = Convert.FromBase64String(originalName);
 
-                // Cambiar la imagen en base64 completamente por el sha
-                photo.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "rooms");
+                  // Cambiar la imagen en base64 completamente por el sha
+                  photo.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "rooms");
 
-                Console.WriteLine($"Nuevo nombre de la foto procesada: {photo.RoomPhotoName}");
-            }
+                  Console.WriteLine($"Nuevo nombre de la foto procesada: {photo.RoomPhotoName}");
+              }
 
-            room.Photos = roomCreateDTO.Photos;
-        }
-        else
-        {
-            return new ActionResponse<Room>
-            {
-                WasSuccess = false,
-                Message = "ERR004"
-            };
-        }*/
+              room.Photos = roomCreateDTO.Photos;
+          }
+          else
+          {
+              return new ActionResponse<Room>
+              {
+                  WasSuccess = false,
+                  Message = "ERR004"
+              };
+          }*/
 
         _context.Add(room);
         try
@@ -246,7 +246,7 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
         var room = new Room
         {
             RoomNumber = roomCreateDTO.RoomNumber,
-            Price = roomCreateDTO.Price,
+            //Price = roomCreateDTO.Price,
             IsAvailable = roomCreateDTO.IsAvailable,
             Accommodation = accomodation,
             RoomType = roomType,
