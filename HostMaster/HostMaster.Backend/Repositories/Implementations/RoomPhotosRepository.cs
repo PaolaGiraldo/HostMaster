@@ -33,11 +33,11 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,
-            RoomPhotoUrl = roomPhotoCreateDTO.RoomPhotoName,
+            RoomPhotoURL = roomPhotoCreateDTO.RoomPhotoURL,
         };
 
-        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
-        roomPhoto.RoomPhotoUrl = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
+        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoURL!);
+        roomPhoto.RoomPhotoURL = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
 
         _context.Add(roomPhoto);
 
@@ -70,16 +70,16 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
 
     async Task<ActionResponse<RoomPhoto>> IRoomPhotosRepository.UpdateAsync(RoomPhotoCreateDTO roomPhotoCreateDTO)
     {
-        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoName!);
-        roomPhotoCreateDTO.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "hostMaster");
+        var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoURL!);
+        roomPhotoCreateDTO.RoomPhotoURL = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "hostMaster");
 
         Debug.WriteLine("BASE 64 FILE");
-        Debug.WriteLine(roomPhotoCreateDTO.RoomPhotoName);
+        Debug.WriteLine(roomPhotoCreateDTO.RoomPhotoURL);
 
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,
-            RoomPhotoUrl = roomPhotoCreateDTO.RoomPhotoName,
+            RoomPhotoURL = roomPhotoCreateDTO.RoomPhotoURL,
         };
 
         _context.Update(roomPhoto);
@@ -146,7 +146,7 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
 
         foreach (var photo in photosToDelete)
         {
-            await _fileStorage.RemoveFileAsync(photo.RoomPhotoName, "teams");
+            await _fileStorage.RemoveFileAsync(photo.RoomPhotoURL, "teams");
         }
 
         return new ActionResponse<RoomPhoto>

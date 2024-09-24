@@ -47,10 +47,10 @@ public partial class RoomForm
         // Procesamos y validamos cada imagen en la lista de RoomPhotoCreateDTO
         foreach (var roomPhoto in RoomPhotoCreateDTO)
         {
-            if (!string.IsNullOrEmpty(roomPhoto.RoomPhotoName))
+            if (!string.IsNullOrEmpty(roomPhoto.RoomPhotoURL))
             {
                 // Procesamos la imagen como antes, por ejemplo generando una URL para vista previa
-                var roomPhotoImageUrl = $"data:image/jpeg;base64,{roomPhoto.RoomPhotoName}";
+                var roomPhotoImageUrl = $"data:image/jpeg;base64,{roomPhoto.RoomPhotoURL}";
 
                 // Si necesitas hacer algo con las imágenes, como asignarlas a variables para la vista, lo harías aquí
                 // Por ejemplo: Guardar la URL para mostrar en la interfaz
@@ -77,7 +77,7 @@ public partial class RoomForm
                 // Crear un nuevo objeto Photo y asignar el valor de la imagen Base64
                 var roomPhoto = new RoomPhotoCreateDTO
                 {
-                    RoomPhotoName = base64Image, // Asignar la imagen Base64 a RoomPhotoName
+                    RoomPhotoURL = base64Image, // Asignar la imagen Base64 a RoomPhotoName
                     RoomId = RoomCreateDTO.Id,
                 };
                 // Console.WriteLine(base64Image);
@@ -86,7 +86,7 @@ public partial class RoomForm
 
                 RoomPhotoCreateDTO.Add(roomPhoto);
 
-               // Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+                // Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
             }
         }
     }

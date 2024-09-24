@@ -10,7 +10,7 @@ namespace HostMaster.Shared.DTOs;
 public class RoomPhotoCreateDTO
 {
     [Required]
-    public string RoomPhotoName { get; set; } = null!;
+    public string RoomPhotoURL { get; set; } = null!;
 
     [Required]
     public int RoomId { get; set; }

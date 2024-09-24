@@ -13,12 +13,6 @@ public class Reservation
     [Required]
     public string State { get; set; } = null!;
 
-    //Foreign keys
-    public int RoomId { get; set; }
-
-    [Required]
-    public Room Room { get; set; } = null!;
-
     public int CustomerId { get; set; }
 
     [Required]

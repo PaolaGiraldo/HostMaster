@@ -41,7 +41,7 @@ else
                 {
                     @foreach (var photo in context.Photos)
                     {
-                        <MudImage Src="@photo.RoomPhotoName" Width="90" Height="60" Style="margin-right: 10px;" />
+                        <MudImage Src="@photo.RoomPhotoURL" Width="90" Height="60" Style="margin-right: 10px;" />
                     }
                 }
                 else
@@ -60,7 +60,7 @@ else
                     <MudIcon Icon="@Icons.Material.Filled.Close" Color="Color.Error" />
                 }
             </MudTd>
-            <MudTd>@context.Price</MudTd>
+            <MudTd>@context.</MudTd>
             <MudTd>
                 <MudTooltip Text="@Localizer["Edit"]">
                     <MudButton Variant="Variant.Filled"

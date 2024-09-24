@@ -52,7 +52,7 @@ public partial class RoomEdit
             {
                 Id = room!.Id,
                 RoomNumber = room!.RoomNumber,
-                Price = room.Price,
+                Price = room.RoomType!.Price,
                 IsAvailable = room.IsAvailable,
                 AccommodationId = room.AccommodationId
             };
@@ -62,11 +62,11 @@ public partial class RoomEdit
 
     private async Task EditAsync()
     {
-       // Console.WriteLine("EDIT ROOM");
-       // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+        // Console.WriteLine("EDIT ROOM");
+        // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
 
-       // Console.WriteLine("ANTES DEL PUT");
-       // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+        // Console.WriteLine("ANTES DEL PUT");
+        // Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
         var responseHttp = await Repository.PutAsync("api/rooms", roomCreateDTO);
 
         if (responseHttp.Error)
