@@ -76,14 +76,19 @@ public partial class RoomEdit
             return;
         }
 
-        var responseHttp3 = await Repository.DeleteAsync($"api/roomphotos/by-roomId/{roomCreateDTO?.Id}");
-        if (responseHttp3.Error)
+        Console.WriteLine("PHOTOSSSSS EN EDIT");
+        Console.WriteLine(JsonSerializer.Serialize(roomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
+        if (roomPhotoCreateDTO.Count != 0)
         {
-            var mensajeError = await responseHttp3.GetErrorMessageAsync();
-            Snackbar.Add(Localizer[mensajeError!], Severity.Error);
-            return;
+            Console.WriteLine("DELETE PHOTOS");
+            var responseHttp3 = await Repository.DeleteAsync($"api/roomphotos/by-roomId/{roomCreateDTO?.Id}");
+            if (responseHttp3.Error)
+            {
+                var mensajeError = await responseHttp3.GetErrorMessageAsync();
+                Snackbar.Add(Localizer[mensajeError!], Severity.Error);
+                return;
+            }
         }
-
         foreach (var roomPhotoDTO in roomPhotoCreateDTO)
 
         {
