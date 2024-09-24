@@ -27,19 +27,26 @@ public partial class MultipleInputImg
     }
 
     // Modificación del método OnChange para múltiples archivos
+    // Modificación del método OnChange para aceptar un máximo de 3 archivos
     private async Task OnChange(InputFileChangeEventArgs e)
     {
         fileNames.Clear();      // Limpiar la lista de nombres de archivos
         imagesBase64.Clear();   // Limpiar la lista de imágenes previas
 
-        var maxAllowedSize = 5 * 1024 * 1024; // Aumentar el tamaño máximo permitido a 5 MB (por ejemplo)
-                                              // Console.WriteLine("MultipleInputMessage 1");
-        foreach (var file in e.GetMultipleFiles())  // Iterar sobre los archivos seleccionados
+        var maxFiles = 3; // Número máximo de archivos permitidos
+        var maxAllowedSize = 5 * 1024 * 1024; // Tamaño máximo permitido 5 MB
+
+        var selectedFiles = e.GetMultipleFiles().Take(maxFiles); // Solo tomamos los primeros 3 archivos
+
+        if (e.GetMultipleFiles().Count > maxFiles)
         {
-            //   Console.WriteLine("MultipleInputMessage 2");
+            Console.WriteLine($"Solo se permiten un máximo de {maxFiles} archivos.");
+        }
+
+        foreach (var file in selectedFiles)  // Iterar sobre los archivos seleccionados (máximo 3)
+        {
             try
             {
-                //  Console.WriteLine("MultipleInputMessage 3");
                 fileNames.Add(file.Name);               // Agregar el nombre del archivo
 
                 // Verificar que el archivo no exceda el tamaño permitido
@@ -48,17 +55,15 @@ public partial class MultipleInputImg
                     Console.WriteLine($"El archivo {file.Name} excede el tamaño máximo permitido de 5 MB.");
                     continue; // Saltar este archivo si excede el tamaño permitido
                 }
-                // Console.WriteLine("MultipleInputMessage 4");
+
                 using var stream = file.OpenReadStream(maxAllowedSize);
                 using var memoryStream = new MemoryStream();
-                //  Console.WriteLine("MultipleInputMessage 5");
+
                 // Copiar el contenido del archivo en el MemoryStream
                 await stream.CopyToAsync(memoryStream);
                 byte[] arrBytes = memoryStream.ToArray();
-                //  Console.WriteLine("MultipleInputMessage 6");
                 string base64String = Convert.ToBase64String(arrBytes); // Convertir a Base64
                 imagesBase64.Add(base64String);         // Agregar a la lista de imágenes Base64
-                                                        //   Console.WriteLine("MultipleInputMessage 7");
             }
             catch (Exception ex)
             {
@@ -70,4 +75,5 @@ public partial class MultipleInputImg
         await ImagesSelected.InvokeAsync(imagesBase64);  // Invocar el callback con la lista de imágenes
         StateHasChanged();  // Notificar que el estado del componente ha cambiado
     }
+
 }
