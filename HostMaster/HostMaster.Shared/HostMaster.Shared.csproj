@@ -15,10 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\literals.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>literals.resx</DependentUpon>
+    <Compile Update="Resources\Literals.Designer.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
 
@@ -26,9 +24,7 @@
     <EmbeddedResource Update="Resources\Literals.es.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\literals.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>literals.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resources\Literals.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

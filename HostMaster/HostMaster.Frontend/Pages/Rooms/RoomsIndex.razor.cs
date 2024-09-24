@@ -1,14 +1,12 @@
 using System.Net;
-using System.Net.NetworkInformation;
 using HostMaster.Frontend.Repositories;
 using HostMaster.Shared.Entities;
-using HostMaster.Shared.Resources;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
 using HostMaster.Frontend.Shared;
-using HostMaster.Shared.DTOs;
+using HostMaster.Shared.Resources;
 
 namespace HostMaster.Frontend.Pages.Rooms;
 
@@ -148,8 +146,6 @@ public partial class RoomsIndex
             return;
         }
 
-
-
         var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{room.Id}");
         if (responseHttp.Error)
         {
@@ -164,8 +160,6 @@ public partial class RoomsIndex
             }
             return;
         }
-
-        
 
         await LoadTotalRecordsAsync();
         await table.ReloadServerData();
