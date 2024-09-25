@@ -10,9 +10,15 @@ namespace HostMaster.Shared.DTOs;
 
 public class RoomTypeDTO
 {
+    public int Id { get; set; }
+
     [Required]
     public string TypeName { get; set; } = null!;
 
     [Required]
     public string Description { get; set; } = null!;
+
+    public decimal Price { get; set; }
+
+    public int MaxGuests { get; set; }
 }

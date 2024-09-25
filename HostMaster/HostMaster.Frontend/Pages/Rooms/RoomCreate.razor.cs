@@ -33,8 +33,8 @@ public partial class RoomCreate
 
         var jsonResponse = await responseHttp.HttpResponseMessage.Content.ReadAsStringAsync();
 
-       // Console.WriteLine("ID DEL RESPONSE:");
-      //  Console.WriteLine(jsonResponse);
+        // Console.WriteLine("ID DEL RESPONSE:");
+        //  Console.WriteLine(jsonResponse);
 
         /* var options = new JsonSerializerOptions
          {
@@ -43,9 +43,9 @@ public partial class RoomCreate
 
         var createdRoom = JsonSerializer.Deserialize<RoomCreateResponse>(jsonResponse);
 
-        var roomId = createdRoom.id;
+        var roomId = createdRoom!.id;
 
-       // Console.WriteLine($"este es el ID: {createdRoom?.id}");
+        // Console.WriteLine($"este es el ID: {createdRoom?.id}");
 
         //Console.WriteLine("CREATE ROOM");
         //Console.WriteLine(JsonSerializer.Serialize(roomCreateDTO, new JsonSerializerOptions { WriteIndented = true }));

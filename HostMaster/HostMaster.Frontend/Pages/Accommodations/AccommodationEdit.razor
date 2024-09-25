@@ -1,0 +1,13 @@
+﻿@using HostMaster.Frontend.Shared
+@if (accommodationCreateDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <AccommodationForm @ref="accommodationForm" AccommodationCreateDTO="accommodationCreateDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

@@ -16,6 +16,12 @@ public partial class RoomForm
     private List<IBrowserFile> files = new List<IBrowserFile>();
 
     private EditContext editContext = null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoomTypesAsync();
+    }
+
     private RoomType selectedRoomType = new();
     private List<RoomType>? roomTypes;
 
@@ -36,32 +42,9 @@ public partial class RoomForm
         editContext = new(RoomCreateDTO);
     }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadRoomTypesAsync();
-    }
-
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        // Procesamos y validamos cada imagen en la lista de RoomPhotoCreateDTO
-        foreach (var roomPhoto in RoomPhotoCreateDTO)
-        {
-            if (!string.IsNullOrEmpty(roomPhoto.RoomPhotoURL))
-            {
-                // Procesamos la imagen como antes, por ejemplo generando una URL para vista previa
-                var roomPhotoImageUrl = $"data:image/jpeg;base64,{roomPhoto.RoomPhotoURL}";
-
-                // Si necesitas hacer algo con las imágenes, como asignarlas a variables para la vista, lo harías aquí
-                // Por ejemplo: Guardar la URL para mostrar en la interfaz
-                // roomPhotoPreviewUrls.Add(roomPhotoImageUrl);
-            }
-            else
-            {
-                // Si alguna imagen está vacía, podrías manejarlo aquí (mostrar mensaje de error, por ejemplo)
-                Console.WriteLine("Una imagen en RoomPhotoCreateDTO está vacía.");
-            }
-        }
     }
 
     // Método que se invoca cuando se seleccionan imágenes
@@ -106,6 +89,7 @@ public partial class RoomForm
 
     private async Task OnBeforeInternalNavigation(LocationChangingContext context)
     {
+        // Console.Write("CHANGESSSSS");
         var formWasEdited = editContext.IsModified();
 
         if (!formWasEdited || FormPostedSuccessfully)
@@ -149,32 +133,4 @@ public partial class RoomForm
         selectedRoomType = roomType;
         RoomCreateDTO.RoomTypeId = roomType.Id;
     }
-
-    /* private void UploadFiles(IReadOnlyList<IBrowserFile> files)
-     {
-         foreach (var file in files)
-         {
-             this.files.Add(file);
-             // Crear un nuevo objeto Photo y asignar el valor de la imagen Base64
-             var roomPhoto = new RoomPhotoCreateDTO
-             {
-                 RoomPhotoName = file, // Asignar la imagen Base64 a RoomPhotoName
-                 RoomId = RoomCreateDTO.Id,
-             };
-             Console.WriteLine(file);
-             Console.WriteLine("OnImagesSelected cilcle");
-             // Agregar la nueva instancia de Photo a la colección Photos
-
-             RoomPhotoCreateDTO.Add(roomPhoto);
-
-             Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
-         }
-         //TODO upload the files to the server
-     }*/
-
-    /* private void UploadFiles2(IBrowserFile file)
-     {
-         files.Add(file);
-         //TODO upload the files to the server
-     }*/
 }

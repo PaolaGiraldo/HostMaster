@@ -1,0 +1,42 @@
+﻿@using HostMaster.Frontend.Shared
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
+
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudTextField Label="@Localizer["TypeName"]"
+                  @bind-Value="@RoomTypeDTO.TypeName"
+                  For="@(() => RoomTypeDTO.TypeName)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Description"]"
+                  @bind-Value="@RoomTypeDTO.Description"
+                  For="@(() => RoomTypeDTO.Description)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["Price"]"
+                  @bind-Value="@RoomTypeDTO.Price"
+                  For="@(() => RoomTypeDTO.Price)"
+                  Class="mb-4" />
+
+    <MudTextField Label="@Localizer["MaxGuests"]"
+                  @bind-Value="@RoomTypeDTO.MaxGuests"
+                  For="@(() => RoomTypeDTO.MaxGuests)"
+                  Class="mb-4" />
+
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.ArrowBack"
+               Color="Color.Info"
+               OnClick="ReturnAction">
+        @Localizer["Return"]
+    </MudButton>
+
+    <MudButton Variant="Variant.Outlined"
+               StartIcon="@Icons.Material.Filled.Check"
+               Color="Color.Primary"
+               ButtonType="ButtonType.Submit">
+        @Localizer["SaveChanges"]
+    </MudButton>
+</EditForm>
+

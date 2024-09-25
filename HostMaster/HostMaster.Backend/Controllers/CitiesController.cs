@@ -8,19 +8,19 @@ namespace HostMaster.Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RoomTypesController : GenericController<RoomType>
+public class CitiesController : GenericController<City>
 {
-    private readonly IRoomTypesUnitOfWork _roomTypesUnitOfWork;
+    private readonly ICitiesUnitOfWork _citiesUnitOfWork;
 
-    public RoomTypesController(IGenericUnitOfWork<RoomType> unitOfWork, IRoomTypesUnitOfWork roomTypesUnitOfWork) : base(unitOfWork)
+    public CitiesController(IGenericUnitOfWork<City> unitOfWork, ICitiesUnitOfWork citiesUnitOfWork) : base(unitOfWork)
     {
-        _roomTypesUnitOfWork = roomTypesUnitOfWork;
+        _citiesUnitOfWork = citiesUnitOfWork;
     }
 
     [HttpGet("paginated")]
     public override async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
     {
-        var response = await _roomTypesUnitOfWork.GetAsync(pagination);
+        var response = await _citiesUnitOfWork.GetAsync(pagination);
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -31,7 +31,7 @@ public class RoomTypesController : GenericController<RoomType>
     [HttpGet]
     public override async Task<IActionResult> GetAsync()
     {
-        var response = await _roomTypesUnitOfWork.GetAsync();
+        var response = await _citiesUnitOfWork.GetAsync();
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -42,7 +42,7 @@ public class RoomTypesController : GenericController<RoomType>
     [HttpGet("{id}")]
     public override async Task<IActionResult> GetAsync(int id)
     {
-        var response = await _roomTypesUnitOfWork.GetAsync(id);
+        var response = await _citiesUnitOfWork.GetAsync(id);
         if (response.WasSuccess)
         {
             return Ok(response.Result);
@@ -53,7 +53,7 @@ public class RoomTypesController : GenericController<RoomType>
     [HttpGet("totalRecordsPaginated")]
     public async Task<IActionResult> GetTotalRecordsAsync([FromQuery] PaginationDTO pagination)
     {
-        var action = await _roomTypesUnitOfWork.GetTotalRecordsAsync(pagination);
+        var action = await _citiesUnitOfWork.GetTotalRecordsAsync(pagination);
         if (action.WasSuccess)
         {
             return Ok(action.Result);
@@ -62,9 +62,9 @@ public class RoomTypesController : GenericController<RoomType>
     }
 
     [HttpPut("full")]
-    public async Task<IActionResult> PutAsync(RoomTypeDTO roomTypeDTO)
+    public async Task<IActionResult> PutAsync(CityCreateDTO cityCreateDTO)
     {
-        var action = await _roomTypesUnitOfWork.UpdateAsync(roomTypeDTO);
+        var action = await _citiesUnitOfWork.UpdateAsync(cityCreateDTO);
         if (action.WasSuccess)
         {
             return Ok(action.Result);

@@ -9,11 +9,6 @@
                   For="@(() => RoomCreateDTO.RoomNumber)"
                   Class="mb-4" />
 
-  <!-- <MudTextField Label="@Localizer["Price"]"
-                  @bind-Value="@RoomCreateDTO.Price"
-                  For="@(() => RoomCreateDTO.Price)"
-                    Class="mb-4" />-->
-
     <MudCheckBox Label="@Localizer["IsAvailable"]"
                   @bind-Value="@RoomCreateDTO.IsAvailable"
                   For="@(() => RoomCreateDTO.IsAvailable)"
@@ -41,22 +36,6 @@
         <MultipleInputImg Label=@Localizer["Image"] ImagesSelected="OnImagesSelected" />
     </div>
 
-    <!-- <div></div>
-
-      <div class="my-2">
-        <InputImg Label=@Localizer["Image"] ImageSelected="ImageSelected" ImageURL="@imageUrlsingle" />
-    </div>  -->
-    <!-- <div class="my-2">
-        <MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadFiles">
-            <ActivatorContent>
-                <MudButton Variant="Variant.Filled"
-                           Color="Color.Primary"
-                           StartIcon="@Icons.Material.Filled.CloudUpload">
-                    Subir Imagen
-                </MudButton>
-            </ActivatorContent>
-        </MudFileUpload>
-    </div>  -->
 
     <MudButton Variant="Variant.Outlined"
                StartIcon="@Icons.Material.Filled.ArrowBack"

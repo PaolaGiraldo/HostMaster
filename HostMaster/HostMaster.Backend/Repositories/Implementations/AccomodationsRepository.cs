@@ -5,6 +5,7 @@ using HostMaster.Shared.DTOs;
 using HostMaster.Shared.Entities;
 using HostMaster.Shared.Responses;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HostMaster.Backend.Repositories.Implementations;
 
@@ -31,7 +32,6 @@ public class AccomodationsRepository : GenericRepository<RoomType>, IAccomodatio
 
         var accommodation = new Accommodation
         {
-            Id = accommodationCreateDTO.Id,
             Name = accommodationCreateDTO.Name,
             Address = accommodationCreateDTO.Address,
             PhoneNumber = accommodationCreateDTO.PhoneNumber,
@@ -48,12 +48,12 @@ public class AccomodationsRepository : GenericRepository<RoomType>, IAccomodatio
                 Result = accommodation
             };
         }
-        catch (DbUpdateException)
+        catch (DbUpdateException exception)
         {
             return new ActionResponse<Accommodation>
             {
                 WasSuccess = false,
-                Message = "ERR003"
+                Message = exception.Message
             };
         }
         catch (Exception exception)
@@ -110,14 +110,14 @@ public class AccomodationsRepository : GenericRepository<RoomType>, IAccomodatio
         if (!string.IsNullOrWhiteSpace(pagination.Filter))
         {
             queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower())
-            && x.Id == pagination.Id);
+            && x.CityId == pagination.Id);
         }
 
         return new ActionResponse<IEnumerable<Accommodation>>
         {
             WasSuccess = true,
             Result = await queryable
-                .Where(x => x.Id == pagination.Id)
+                .Where(x => x.CityId == pagination.Id)
                 .OrderBy(x => x.Name)
                 .Paginate(pagination)
                 .ToListAsync()

@@ -24,7 +24,7 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
     {
         var room = await _context.Rooms
              .Include(r => r.Accommodation)
-             .ThenInclude(r => r.City)
+             .ThenInclude(r => r!.City)
              .Include(r => r.RoomType)
              .Include(r => r.Photos)
              .FirstOrDefaultAsync(r => r.Id == id);
@@ -205,7 +205,7 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
         var room = await _context.Rooms
         .Where(r => r.AccommodationId == accommodationId)
         .Include(r => r.Accommodation)
-        .ThenInclude(a => a.City)
+        .ThenInclude(a => a!.City)
         .Include(r => r.RoomType)
         .Include(r => r.Reservations)
         .Include(r => r.RoomInventoryItems)

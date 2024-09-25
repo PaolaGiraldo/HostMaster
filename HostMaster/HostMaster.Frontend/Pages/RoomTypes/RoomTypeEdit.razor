@@ -1,0 +1,13 @@
+﻿@using HostMaster.Frontend.Shared
+@if (roomTypeDTO is null)
+{
+    <Loading />
+}
+else
+{
+    <MudDialog>
+        <DialogContent>
+            <RoomTypeForm @ref="roomTypeForm" RoomTypeDTO="roomTypeDTO" OnValidSubmit="EditAsync" ReturnAction="Return" />
+        </DialogContent>
+    </MudDialog>
+}

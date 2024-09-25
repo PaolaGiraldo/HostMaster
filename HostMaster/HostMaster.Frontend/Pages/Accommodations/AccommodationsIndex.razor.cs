@@ -1,24 +1,23 @@
-using System.Net;
+using HostMaster.Frontend.Pages.Rooms;
 using HostMaster.Frontend.Repositories;
+using HostMaster.Frontend.Shared;
 using HostMaster.Shared.Entities;
-using Microsoft.AspNetCore.Authorization;
+using HostMaster.Shared.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
-using HostMaster.Frontend.Shared;
-using HostMaster.Shared.Resources;
+using System.Net;
 
-namespace HostMaster.Frontend.Pages.Rooms;
+namespace HostMaster.Frontend.Pages.Accommodations;
 
-[Authorize(Roles = "Admin")]
-public partial class RoomsIndex
+public partial class AccommodationsIndex
 {
-    private List<Room>? Rooms { get; set; }
-    private MudTable<Room> table = new();
+    private List<Accommodation>? Accommodations { get; set; }
+    private MudTable<Accommodation> table = new();
     private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
-    private const string baseUrl = "api/rooms";
+    private const string baseUrl = "api/accommodations";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
     private int accommodationId = 1;
 
@@ -64,7 +63,7 @@ public partial class RoomsIndex
         loading = false;
     }
 
-    private async Task<TableData<Room>> LoadListAsync(TableState state, CancellationToken cancellationToken)
+    private async Task<TableData<Accommodation>> LoadListAsync(TableState state, CancellationToken cancellationToken)
     {
         int page = state.Page + 1;
         int pageSize = state.PageSize;
@@ -75,18 +74,18 @@ public partial class RoomsIndex
             url += $"&filter={Filter}";
         }
 
-        var responseHttp = await Repository.GetAsync<List<Room>>(url);
+        var responseHttp = await Repository.GetAsync<List<Accommodation>>(url);
         if (responseHttp.Error)
         {
             var message = await responseHttp.GetErrorMessageAsync();
             Snackbar.Add(Localizer[message!], Severity.Error);
-            return new TableData<Room> { Items = [], TotalItems = 0 };
+            return new TableData<Accommodation> { Items = [], TotalItems = 0 };
         }
         if (responseHttp.Response == null)
         {
-            return new TableData<Room> { Items = [], TotalItems = 0 };
+            return new TableData<Accommodation> { Items = [], TotalItems = 0 };
         }
-        return new TableData<Room>
+        return new TableData<Accommodation>
         {
             Items = responseHttp.Response,
             TotalItems = totalRecords
@@ -102,7 +101,7 @@ public partial class RoomsIndex
 
     private async Task ShowModalAsync(int id = 0, bool isEdit = false)
     {
-        var options = new DialogOptions() { CloseOnEscapeKey = true, BackdropClick = false, CloseButton = true };
+        var options = new DialogOptions() { CloseOnEscapeKey = true, CloseButton = true };
         IDialogReference? dialog;
         if (isEdit)
         {
@@ -110,11 +109,11 @@ public partial class RoomsIndex
                  {
                      { "Id", id }
                  };
-            dialog = DialogService.Show<RoomEdit>($"{Localizer["Edit"]} {Localizer["Room"]}", parameters, options);
+            dialog = DialogService.Show<AccommodationEdit>($"{Localizer["Edit"]} {Localizer["Accommodation"]}", parameters, options);
         }
         else
         {
-            dialog = DialogService.Show<RoomCreate>($"{Localizer["New"]} {Localizer["Room"]}", options);
+            dialog = DialogService.Show<AccommodationCreate>($"{Localizer["New"]} {Localizer["Accommodation"]}", options);
         }
 
         var result = await dialog.Result;
@@ -125,11 +124,11 @@ public partial class RoomsIndex
         }
     }
 
-    private async Task DeleteAsync(Room room)
+    private async Task DeleteAsync(Accommodation accommodation)
     {
         var parameters = new DialogParameters
             {
-                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Room"], room.RoomNumber) }
+                { "Message", string.Format(Localizer["DeleteConfirm"], Localizer["Accommodation"], accommodation.Name) }
             };
         var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, CloseOnEscapeKey = true };
         var dialog = DialogService.Show<ConfirmDialog>(Localizer["Confirmation"], parameters, options);
@@ -139,7 +138,7 @@ public partial class RoomsIndex
             return;
         }
 
-        var responseHttp3 = await Repository.DeleteAsync($"api/roomphotos/by-roomId/{room.Id}");
+        var responseHttp3 = await Repository.DeleteAsync($"api/roomphotos/by-roomId/{accommodation.Id}");
         if (responseHttp3.Error)
         {
             var mensajeError = await responseHttp3.GetErrorMessageAsync();
@@ -147,12 +146,12 @@ public partial class RoomsIndex
             return;
         }
 
-        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{room.Id}");
+        var responseHttp = await Repository.DeleteAsync($"{baseUrl}/{accommodation.Id}");
         if (responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
             {
-                NavigationManager.NavigateTo("/rooms");
+                NavigationManager.NavigateTo("/accommodations");
             }
             else
             {
