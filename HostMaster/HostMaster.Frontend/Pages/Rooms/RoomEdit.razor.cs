@@ -52,7 +52,6 @@ public partial class RoomEdit
             {
                 Id = room!.Id,
                 RoomNumber = room!.RoomNumber,
-                Price = room.RoomType!.Price,
                 IsAvailable = room.IsAvailable,
                 AccommodationId = room.AccommodationId
             };

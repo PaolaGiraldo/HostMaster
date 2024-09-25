@@ -1,4 +1,5 @@
 ﻿using HostMaster.Shared.Entities;
+using HostMaster.Shared.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,17 +13,25 @@ public class RoomCreateDTO
 {
     public int Id { get; set; }
 
-    [Required]
+    [Display(Name = "RoomNumber", ResourceType = typeof(Literals))]
+    [MaxLength(3, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomNumber { get; set; } = null!;
 
-    public decimal Price { get; set; }
     public bool IsAvailable { get; set; }
 
     // Foreign keys
+    [Display(Name = "AccommodationId", ResourceType = typeof(Literals))]
+    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int AccommodationId { get; set; }
 
     public Accommodation? Accommodation { get; set; }
 
+    // Foreign keys
+    [Display(Name = "RoomTypeId", ResourceType = typeof(Literals))]
+    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomTypeId { get; set; }
 
     public RoomType? RoomType { get; set; }

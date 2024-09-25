@@ -4,7 +4,7 @@
 <EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
-    <MudTextField Label="@Localizer["TypeName"]"
+    <MudTextField Label="@Localizer["RoomTypeName"]"
                   @bind-Value="@RoomTypeDTO.TypeName"
                   For="@(() => RoomTypeDTO.TypeName)"
                   Class="mb-4" />

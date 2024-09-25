@@ -1,4 +1,5 @@
 ﻿using HostMaster.Shared.Entities;
+using HostMaster.Shared.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,13 +13,23 @@ public class RoomTypeDTO
 {
     public int Id { get; set; }
 
-    [Required]
+    [Display(Name = "RoomTypeName", ResourceType = typeof(Literals))]
+    [MaxLength(20, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string TypeName { get; set; } = null!;
 
-    [Required]
+    [Display(Name = "Description", ResourceType = typeof(Literals))]
+    [MaxLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Description { get; set; } = null!;
 
+    [Display(Name = "Price", ResourceType = typeof(Literals))]
+    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public decimal Price { get; set; }
 
+    [Display(Name = "MaxGuests", ResourceType = typeof(Literals))]
+    [MaxLength(2, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int MaxGuests { get; set; }
 }

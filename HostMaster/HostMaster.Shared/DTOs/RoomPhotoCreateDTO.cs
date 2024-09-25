@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HostMaster.Shared.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,9 +10,15 @@ namespace HostMaster.Shared.DTOs;
 
 public class RoomPhotoCreateDTO
 {
-    [Required]
+    [Display(Name = "RoomPhotoURL", ResourceType = typeof(Literals))]
+    [MaxLength(200, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomPhotoURL { get; set; } = null!;
 
-    [Required]
+    // Foreign keys
+
+    [Display(Name = "RoomId", ResourceType = typeof(Literals))]
+    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomId { get; set; }
 }

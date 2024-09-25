@@ -1,4 +1,5 @@
 ﻿using HostMaster.Shared.Entities;
+using HostMaster.Shared.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,13 +13,19 @@ namespace HostMaster.Shared.DTOs
     {
         public int Id { get; set; }
 
-        [Required]
+        [Display(Name = "AccommodationName", ResourceType = typeof(Literals))]
+        [MaxLength(100, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
         public string Name { get; set; } = null!;
 
-        [Required]
+        [Display(Name = "AccommodationAddress", ResourceType = typeof(Literals))]
+        [MaxLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
         public string Address { get; set; } = null!;
 
-        [Required]
+        [Display(Name = "AccommodationPhoneNumber", ResourceType = typeof(Literals))]
+        [MaxLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
         public string PhoneNumber { get; set; } = null!;
 
         // Foreign keys

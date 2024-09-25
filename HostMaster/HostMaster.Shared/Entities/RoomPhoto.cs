@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HostMaster.Shared.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace HostMaster.Shared.Entities;
 
@@ -6,12 +7,16 @@ public class RoomPhoto
 {
     public int Id { get; set; }
 
-    [Required]
+    [Display(Name = "RoomPhotoURL", ResourceType = typeof(Literals))]
+    [MaxLength(200, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomPhotoURL { get; set; } = null!;
 
     // Foreign keys
 
-    [Required]
+    [Display(Name = "RoomId", ResourceType = typeof(Literals))]
+    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomId { get; set; }
 
     public Room? Room { get; set; }
