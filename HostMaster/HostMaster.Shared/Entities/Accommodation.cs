@@ -25,7 +25,6 @@ public class Accommodation
 
     // Foreign keys
     [Display(Name = "CityId", ResourceType = typeof(Literals))]
-    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int CityId { get; set; }
 

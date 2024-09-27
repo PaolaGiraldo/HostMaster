@@ -23,13 +23,11 @@ public class RoomTypeDTO
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string Description { get; set; } = null!;
 
-    [Display(Name = "Price", ResourceType = typeof(Literals))]
-    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Display(Name = "Price", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public decimal Price { get; set; }
 
-    [Display(Name = "MaxGuests", ResourceType = typeof(Literals))]
-    [MaxLength(2, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Display(Name = "MaxGuests", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int MaxGuests { get; set; }
 }

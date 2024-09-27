@@ -19,8 +19,7 @@ namespace HostMaster.Shared.DTOs
         public string Name { get; set; } = null!;
 
         // Foreign keys
-        [Display(Name = "State", ResourceType = typeof(Literals))]
-        [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+        [Display(Name = "State", ResourceType = typeof(Literals))]        
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
         public int StateId { get; set; }
 

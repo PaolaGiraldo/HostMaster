@@ -14,8 +14,7 @@ public class RoomPhoto
 
     // Foreign keys
 
-    [Display(Name = "RoomId", ResourceType = typeof(Literals))]
-    [MaxLength(10, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Display(Name = "RoomId", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomId { get; set; }
 

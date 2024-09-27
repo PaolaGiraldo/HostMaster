@@ -53,8 +53,8 @@ SET IDENTITY_INSERT [dbo].[RoomInventoryItems] ON
 INSERT [dbo].[RoomInventoryItems] ([Id], [ItemName],[Quantity],[Condition],[RoomId]) VALUES (1, N'Cama',1,N'Ok',1)
 SET IDENTITY_INSERT [dbo].[RoomInventoryItems] OFF
 
-SET IDENTITY_INSERT [dbo].[RoomPhotos] ON 
-INSERT [dbo].[RoomPhotos] ([Id], [RoomPhotoUrl],[RoomId]) VALUES (1, N'UUID-1',1)
-SET IDENTITY_INSERT [dbo].[RoomPhotos] OFF
+-- SET IDENTITY_INSERT [dbo].[RoomPhotos] ON 
+-- INSERT [dbo].[RoomPhotos] ([Id], [RoomPhotoUrl],[RoomId]) VALUES (1, N'UUID-1',1)
+-- SET IDENTITY_INSERT [dbo].[RoomPhotos] OFF
 
 INSERT INTO [dbo].[ReservationRoom] ([ReservationsId], [RoomsId]) VALUES (1, 1);
