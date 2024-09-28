@@ -61,11 +61,6 @@ public partial class RoomTypeEdit
 
     private async Task EditAsync()
     {
-        // Console.WriteLine("EDIT ROOM");
-        // Console.WriteLine(JsonSerializer.Serialize(roomTypeDTO, new JsonSerializerOptions { WriteIndented = true }));
-
-        // Console.WriteLine("ANTES DEL PUT");
-        // Console.WriteLine(JsonSerializer.Serialize(roomTypeDTO, new JsonSerializerOptions { WriteIndented = true }));
         var responseHttp = await Repository.PutAsync("api/RoomTypes", roomTypeDTO);
 
         if (responseHttp.Error)

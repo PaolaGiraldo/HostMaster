@@ -15,19 +15,12 @@ public partial class RoomsIndex
 {
     private List<Room>? Rooms { get; set; }
     private MudTable<Room> table = new();
-    private readonly int[] pageSizeOptions = {1, 10, 25, 50, int.MaxValue };
+    private readonly int[] pageSizeOptions = { 1, 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
     private const string baseUrl = "api/rooms";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
     private int accommodationId = 1;
-
-    /*  private bool arrows = true;
-      private bool bullets = true;
-      private bool enableSwipeGesture = true;
-      private bool autocycle = true;
-      private Transition transition = Transition.Slide;
-    */
 
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;

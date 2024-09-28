@@ -60,11 +60,6 @@ public partial class AccommodationEdit
 
     private async Task EditAsync()
     {
-        // Console.WriteLine("EDIT ROOM");
-        // Console.WriteLine(JsonSerializer.Serialize(accommodationCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
-
-        // Console.WriteLine("ANTES DEL PUT");
-        // Console.WriteLine(JsonSerializer.Serialize(accommodationCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
         var responseHttp = await Repository.PutAsync("api/Accommodations", accommodationCreateDTO);
 
         if (responseHttp.Error)

@@ -5,11 +5,10 @@
                class="form-control"
                placeholder="@Localizer["SelectFiles"]"
                readonly="readonly"
-               value="@string.Join(", ", fileNames)" /> <!-- Mostrar nombres de archivos -->
+               value="@string.Join(", ", fileNames)" />
         <label class="input-group-btn">
             <span class="btn btn-primary">
-                @Localizer["Search"]<InputFile OnChange="OnChange" class="d-none" accept=".jpg,.jpeg,.png" multiple />
-                <!-- Atributo "multiple" permite seleccionar varios archivos -->
+                @Localizer["Search"]<InputFile OnChange="OnChange" class="d-none" accept=".jpg,.jpeg,.png" multiple />                
             </span>
         </label>
     </div>

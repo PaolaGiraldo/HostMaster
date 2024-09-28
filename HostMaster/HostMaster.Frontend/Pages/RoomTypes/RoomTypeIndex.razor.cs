@@ -13,18 +13,11 @@ public partial class RoomTypeIndex
 {
     private List<RoomType>? RoomTypes { get; set; }
     private MudTable<RoomType> table = new();
-    private readonly int[] pageSizeOptions = {1, 10, 25, 50, int.MaxValue };
+    private readonly int[] pageSizeOptions = { 1, 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
     private const string baseUrl = "api/roomTypes";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
-
-    /*  private bool arrows = true;
-      private bool bullets = true;
-      private bool enableSwipeGesture = true;
-      private bool autocycle = true;
-      private Transition transition = Transition.Slide;
-    */
 
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;

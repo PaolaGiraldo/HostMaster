@@ -73,9 +73,6 @@ public class RoomPhotosRepository : GenericRepository<RoomPhoto>, IRoomPhotosRep
         var imageBase64 = Convert.FromBase64String(roomPhotoCreateDTO.RoomPhotoURL!);
         roomPhotoCreateDTO.RoomPhotoURL = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "hostMaster");
 
-        Debug.WriteLine("BASE 64 FILE");
-        Debug.WriteLine(roomPhotoCreateDTO.RoomPhotoURL);
-
         var roomPhoto = new RoomPhoto
         {
             RoomId = roomPhotoCreateDTO.RoomId,

@@ -21,13 +21,6 @@ public partial class AccommodationsIndex
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
     private int accommodationId = 1;
 
-    /*  private bool arrows = true;
-      private bool bullets = true;
-      private bool enableSwipeGesture = true;
-      private bool autocycle = true;
-      private Transition transition = Transition.Slide;
-    */
-
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private IDialogService DialogService { get; set; } = null!;

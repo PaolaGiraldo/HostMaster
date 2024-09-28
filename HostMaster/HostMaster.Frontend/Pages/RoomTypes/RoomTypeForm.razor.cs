@@ -21,10 +21,6 @@ public partial class RoomTypeForm
         editContext = new(RoomTypeDTO);
     }
 
-    /* protected override async Task OnInitializedAsync()
-     {
-     }*/
-
     private RoomType selectedRoomType = new();
 
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
@@ -45,7 +41,6 @@ public partial class RoomTypeForm
 
     private async Task OnBeforeInternalNavigation(LocationChangingContext context)
     {
-        // Console.Write("CHANGESSSSS");
         var formWasEdited = editContext.IsModified();
 
         if (!formWasEdited || FormPostedSuccessfully)

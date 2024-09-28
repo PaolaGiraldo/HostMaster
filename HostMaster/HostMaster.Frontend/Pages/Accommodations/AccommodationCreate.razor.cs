@@ -19,7 +19,6 @@ namespace HostMaster.Frontend.Pages.Accommodations
 
         private async Task CreateAsync()
         {
-
             var responseHttp = await Repository.PostAsync("/api/Accommodations", accommodationcreateDTO);
             if (responseHttp.Error)
             {
@@ -29,12 +28,6 @@ namespace HostMaster.Frontend.Pages.Accommodations
             }
 
             Console.Write(responseHttp.HttpResponseMessage.ToString());
-
-            //var jsonResponse = await responseHttp.HttpResponseMessage.Content.ReadAsStringAsync();
-
-            // var createdRoom = JsonSerializer.Deserialize<RoomCreateResponse>(jsonResponse);
-
-            // var roomId = createdRoom.id;
 
             Return();
             Snackbar.Add(Localizer["RecordCreatedOk"], Severity.Success);

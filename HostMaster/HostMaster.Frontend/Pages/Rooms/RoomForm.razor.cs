@@ -47,7 +47,6 @@ public partial class RoomForm
         base.OnParametersSet();
     }
 
-    // Método que se invoca cuando se seleccionan imágenes
     private void OnImagesSelected(List<string> imagesBase64)
 
     {
@@ -57,19 +56,13 @@ public partial class RoomForm
         {
             foreach (var base64Image in imagesBase64)
             {
-                // Crear un nuevo objeto Photo y asignar el valor de la imagen Base64
                 var roomPhoto = new RoomPhotoCreateDTO
                 {
-                    RoomPhotoURL = base64Image, // Asignar la imagen Base64 a RoomPhotoName
+                    RoomPhotoURL = base64Image,
                     RoomId = RoomCreateDTO.Id,
                 };
-                // Console.WriteLine(base64Image);
-                // Console.WriteLine("OnImagesSelected cilcle");
-                // Agregar la nueva instancia de Photo a la colección Photos
 
                 RoomPhotoCreateDTO.Add(roomPhoto);
-
-                // Console.WriteLine(JsonSerializer.Serialize(RoomPhotoCreateDTO, new JsonSerializerOptions { WriteIndented = true }));
             }
         }
     }

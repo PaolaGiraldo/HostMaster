@@ -203,8 +203,6 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
             };
         }
 
-        Console.WriteLine($"room type obtneida: {roomCreateDTO.RoomTypeId}");
-
         var roomType = await _context.RoomTypes.FindAsync(roomCreateDTO.RoomTypeId);
         if (roomType == null)
         {
@@ -218,7 +216,6 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
         var room = new Room
         {
             RoomNumber = roomCreateDTO.RoomNumber,
-            //Price = roomCreateDTO.Price,
             IsAvailable = roomCreateDTO.IsAvailable,
             Accommodation = accomodation,
             RoomType = roomType,
