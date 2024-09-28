@@ -74,15 +74,13 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
 
         if (!string.IsNullOrWhiteSpace(pagination.Filter))
         {
-            queryable = queryable.Where(x => x.RoomNumber.ToLower().Contains(pagination.Filter.ToLower())
-            && x.AccommodationId == pagination.Id);
+            queryable = queryable.Where(x => x.RoomNumber.ToLower().Contains(pagination.Filter.ToLower()));
         }
 
         return new ActionResponse<IEnumerable<Room>>
         {
             WasSuccess = true,
             Result = await queryable
-                .Where(x => x.AccommodationId == pagination.Id)
                 .OrderBy(x => x.RoomNumber)
                 .Paginate(pagination)
                 .ToListAsync()
@@ -142,35 +140,9 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
             RoomNumber = roomCreateDTO.RoomNumber,
             //Price = roomCreateDTO.Price,
             IsAvailable = roomCreateDTO.IsAvailable,
-            Accommodation = accomodation,
-            RoomType = roomType,
+            AccommodationId = accomodation.Id,
+            RoomTypeId = roomType.Id,
         };
-
-        /*  if (roomCreateDTO.Photos != null && roomCreateDTO.Photos.Any())
-          {
-              foreach (var photo in roomCreateDTO.Photos)
-              {
-                  // Procesar y cambiar el nombre de la foto (RoomPhotoName)
-                  string originalName = photo.RoomPhotoName;
-
-                  var imageBase64 = Convert.FromBase64String(originalName);
-
-                  // Cambiar la imagen en base64 completamente por el sha
-                  photo.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "rooms");
-
-                  Console.WriteLine($"Nuevo nombre de la foto procesada: {photo.RoomPhotoName}");
-              }
-
-              room.Photos = roomCreateDTO.Photos;
-          }
-          else
-          {
-              return new ActionResponse<Room>
-              {
-                  WasSuccess = false,
-                  Message = "ERR004"
-              };
-          }*/
 
         _context.Add(room);
         try
@@ -251,27 +223,6 @@ public class RoomsRepository : GenericRepository<Room>, IRoomsRepository
             Accommodation = accomodation,
             RoomType = roomType,
         };
-
-        /*if (roomCreateDTO.Photos != null && roomCreateDTO.Photos.Any())
-        {
-            foreach (var photo in roomCreateDTO.Photos)
-            {
-                Console.WriteLine("PASO 1");
-                // Procesar y cambiar el nombre de la foto (RoomPhotoName)
-                string originalName = photo.RoomPhotoName;
-                Console.WriteLine("PASO 2");
-                var imageBase64 = Convert.FromBase64String(originalName);
-                Console.WriteLine("PASO 3");
-                // Cambiar la imagen en base64 completamente por el sha
-                photo.RoomPhotoName = await _fileStorage.SaveFileAsync(imageBase64, ".jpg", "teams");
-                Console.WriteLine("PASO 4");
-                Console.WriteLine($"Nuevo nombre de la foto procesada: {photo.RoomPhotoName}");
-                Console.WriteLine("PASO 5");
-                _context.Add(photo);
-            }
-
-            // room.Photos = roomCreateDTO.Photos;
-        }*/
 
         _context.Update(room);
         try

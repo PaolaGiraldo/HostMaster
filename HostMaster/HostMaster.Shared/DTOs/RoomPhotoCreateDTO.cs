@@ -10,8 +10,7 @@ namespace HostMaster.Shared.DTOs;
 
 public class RoomPhotoCreateDTO
 {
-    [Display(Name = "RoomPhotoURL", ResourceType = typeof(Literals))]
-    [MaxLength(200, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [Display(Name = "RoomPhotoURL", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomPhotoURL { get; set; } = null!;
 

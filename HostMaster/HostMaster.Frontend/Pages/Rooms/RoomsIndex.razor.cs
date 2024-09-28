@@ -15,7 +15,7 @@ public partial class RoomsIndex
 {
     private List<Room>? Rooms { get; set; }
     private MudTable<Room> table = new();
-    private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
+    private readonly int[] pageSizeOptions = {1, 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
     private const string baseUrl = "api/rooms";
@@ -68,7 +68,7 @@ public partial class RoomsIndex
     {
         int page = state.Page + 1;
         int pageSize = state.PageSize;
-        var url = $"{baseUrl}/paginated/?Id={accommodationId}&page={page}&recordsnumber={pageSize}";
+        var url = $"{baseUrl}/paginated/?&page={page}&recordsnumber={pageSize}";
 
         if (!string.IsNullOrWhiteSpace(Filter))
         {

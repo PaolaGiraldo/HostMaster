@@ -13,7 +13,7 @@ public partial class RoomTypeIndex
 {
     private List<RoomType>? RoomTypes { get; set; }
     private MudTable<RoomType> table = new();
-    private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
+    private readonly int[] pageSizeOptions = {1, 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
     private const string baseUrl = "api/roomTypes";
