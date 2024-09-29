@@ -22,8 +22,6 @@ public partial class RoomsIndex
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
     private int accommodationId = 1;
 
-    private TranslateRoomType translateRoomType = new();
-
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
     [Inject] private IDialogService DialogService { get; set; } = null!;

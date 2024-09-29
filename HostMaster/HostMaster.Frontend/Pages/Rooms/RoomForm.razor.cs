@@ -26,8 +26,6 @@ public partial class RoomForm
     private RoomType selectedRoomType = new();
     private List<RoomType>? roomTypes;
 
-    private TranslateRoomType translateRoomType;
-
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
