@@ -49,7 +49,7 @@ else
                     <MudImage Src="/images/NoImage.png" Width="90" Height="60" />
                 }
             </MudTd>
-            <MudTd>@context.RoomType!.TypeName</MudTd>
+            <MudTd>@TranslateRoomType(@context.RoomType!.TypeName)</MudTd>
             <MudTd>
                 @if (context.IsAvailable)
                 {

@@ -14,21 +14,21 @@ public class RoomCreateDTO
     public int Id { get; set; }
 
     [Display(Name = "RoomNumber", ResourceType = typeof(Literals))]
-    [MaxLength(5, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [StringLength(5, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomNumber { get; set; } = null!;
 
     public bool IsAvailable { get; set; }
 
     // Foreign keys
-    [Display(Name = "AccommodationId", ResourceType = typeof(Literals))]
+    [Display(Name = "AccommodationId", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int AccommodationId { get; set; }
 
     public Accommodation? Accommodation { get; set; }
 
     // Foreign keys
-    [Display(Name = "RoomTypeId", ResourceType = typeof(Literals))]
+    [Display(Name = "RoomTypeId", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomTypeId { get; set; }
 

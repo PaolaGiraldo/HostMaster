@@ -9,7 +9,7 @@ public class Room
     public int Id { get; set; }
 
     [Display(Name = "RoomNumber", ResourceType = typeof(Literals))]
-    [MaxLength(5, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [StringLength(5, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomNumber { get; set; } = null!;
 
@@ -24,7 +24,7 @@ public class Room
     public Accommodation? Accommodation { get; set; }
 
     // Foreign keys
-    [Display(Name = "RoomTypeId", ResourceType = typeof(Literals))]
+    [Display(Name = "RoomTypeId", ResourceType = typeof(Literals))]    
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public int RoomTypeId { get; set; }
 

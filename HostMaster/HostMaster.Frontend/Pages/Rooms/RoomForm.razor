@@ -20,14 +20,14 @@
                   Class="mb-4" />
 
     <MudAutocomplete T="RoomType"
-                     Label=@Localizer["RoomType"]
-                     Placeholder=@Localizer["SelectARoomType"]
+                     Label="@Localizer["RoomType"]"
+                     Placeholder="@Localizer["SelectARoomType"]"
                      SearchFunc="SearchRoomType"
                      Value="selectedRoomType"
                      ValueChanged="RoomTypeChanged"
-                     ToStringFunc="@(e=> e==null?null : $"{e.TypeName}")">
+                     ToStringFunc="@(e => TranslateRoomType(e))">
         <ItemTemplate Context="itemContext">
-            @itemContext.TypeName
+            @TranslateRoomType(itemContext)
         </ItemTemplate>
     </MudAutocomplete>
 

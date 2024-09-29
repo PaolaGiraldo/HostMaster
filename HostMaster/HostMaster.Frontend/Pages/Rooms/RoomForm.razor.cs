@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using System.Text.Json;
+using System;
 
 namespace HostMaster.Frontend.Pages.Rooms;
 
@@ -24,6 +25,8 @@ public partial class RoomForm
 
     private RoomType selectedRoomType = new();
     private List<RoomType>? roomTypes;
+
+    private TranslateRoomType translateRoomType;
 
     [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
@@ -126,4 +129,17 @@ public partial class RoomForm
         selectedRoomType = roomType;
         RoomCreateDTO.RoomTypeId = roomType.Id;
     }
+
+    private string TranslateRoomType(RoomType roomType)
+     {
+         if (roomType == null) return string.Empty;
+
+         return roomType.TypeName switch
+         {
+             "SINGLE" => Localizer["SingleRoom"],
+             "DOUBLE" => Localizer["DoubleRoom"],
+             "DOUBLE 2 BEDS" => Localizer["Double2Beds"],
+             _ => roomType.TypeName
+         };
+     }
 }
