@@ -287,8 +287,8 @@ namespace HostMaster.Backend.Migrations
 
                     b.Property<string>("RoomNumber")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
@@ -344,8 +344,7 @@ namespace HostMaster.Backend.Migrations
 
                     b.Property<string>("RoomPhotoURL")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

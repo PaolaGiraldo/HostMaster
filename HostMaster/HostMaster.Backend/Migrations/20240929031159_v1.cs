@@ -64,8 +64,8 @@ namespace HostMaster.Backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TypeName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", maxLength: 10, nullable: false),
-                    MaxGuests = table.Column<int>(type: "int", maxLength: 2, nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MaxGuests = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,7 @@ namespace HostMaster.Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    StateId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                    StateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,7 +121,7 @@ namespace HostMaster.Backend.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CityId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                    CityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,10 +194,10 @@ namespace HostMaster.Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomNumber = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    RoomNumber = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false),
-                    AccommodationId = table.Column<int>(type: "int", maxLength: 10, nullable: false),
-                    RoomTypeId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                    AccommodationId = table.Column<int>(type: "int", nullable: false),
+                    RoomTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -315,8 +315,8 @@ namespace HostMaster.Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomPhotoURL = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    RoomId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
+                    RoomPhotoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

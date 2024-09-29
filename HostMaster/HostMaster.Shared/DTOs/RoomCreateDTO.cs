@@ -14,7 +14,7 @@ public class RoomCreateDTO
     public int Id { get; set; }
 
     [Display(Name = "RoomNumber", ResourceType = typeof(Literals))]
-    [MaxLength(3, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
+    [StringLength(5, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     public string RoomNumber { get; set; } = null!;
 

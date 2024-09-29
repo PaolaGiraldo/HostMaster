@@ -15,12 +15,14 @@ public partial class RoomsIndex
 {
     private List<Room>? Rooms { get; set; }
     private MudTable<Room> table = new();
-    private readonly int[] pageSizeOptions = { 1, 10, 25, 50, int.MaxValue };
+    private readonly int[] pageSizeOptions = { 10, 25, 50, int.MaxValue };
     private int totalRecords = 0;
     private bool loading;
     private const string baseUrl = "api/rooms";
     private string infoFormat = "{first_item}-{last_item} => {all_items}";
     private int accommodationId = 1;
+
+    private TranslateRoomType translateRoomType = new();
 
     [Inject] private IStringLocalizer<Literals> Localizer { get; set; } = null!;
     [Inject] private IRepository Repository { get; set; } = null!;
@@ -158,5 +160,21 @@ public partial class RoomsIndex
         await LoadTotalRecordsAsync();
         await table.ReloadServerData();
         Snackbar.Add(Localizer["RecordDeletedOk"], Severity.Success);
+    }
+
+
+    private string TranslateRoomType(string typeName)
+    {
+        if (string.IsNullOrEmpty(typeName))
+            return string.Empty;
+
+        // Usamos el typeName como clave para buscar su traducción
+        return typeName switch
+        {
+            "SINGLE" => Localizer["SingleRoom"],
+            "DOUBLE" => Localizer["DoubleRoom"],
+            "DOUBLE 2 BEDS" => Localizer["Double2Beds"],
+            _ => typeName // Devuelve el valor original si no hay traducción
+        };
     }
 }

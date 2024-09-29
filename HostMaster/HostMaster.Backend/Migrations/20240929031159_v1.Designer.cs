@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HostMaster.Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240927133332_v1")]
+    [Migration("20240929031159_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -54,7 +54,6 @@ namespace HostMaster.Backend.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("CityId")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -88,7 +87,6 @@ namespace HostMaster.Backend.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("StateId")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -285,7 +283,6 @@ namespace HostMaster.Backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccommodationId")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAvailable")
@@ -293,11 +290,10 @@ namespace HostMaster.Backend.Migrations
 
                     b.Property<string>("RoomNumber")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<int>("RoomTypeId")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -347,13 +343,11 @@ namespace HostMaster.Backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RoomId")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("RoomPhotoURL")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -376,11 +370,9 @@ namespace HostMaster.Backend.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("MaxGuests")
-                        .HasMaxLength(2)
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasMaxLength(10)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TypeName")

@@ -361,4 +361,13 @@
   <data name="RoomType" xml:space="preserve">
     <value>Room type</value>
   </data>
+  <data name="SingleRoom" xml:space="preserve">
+    <value>Single Room</value>
+  </data>
+  <data name="DoubleRoom" xml:space="preserve">
+    <value>Double Room</value>
+  </data>
+  <data name="Double2Beds" xml:space="preserve">
+    <value>Double 2 beds</value>
+  </data>
 </root>

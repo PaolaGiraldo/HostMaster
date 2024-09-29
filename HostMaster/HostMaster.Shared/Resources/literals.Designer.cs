@@ -277,6 +277,24 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Double 2 beds.
+        /// </summary>
+        public static string Double2Beds {
+            get {
+                return ResourceManager.GetString("Double2Beds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double Room.
+        /// </summary>
+        public static string DoubleRoom {
+            get {
+                return ResourceManager.GetString("DoubleRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -768,6 +786,15 @@ namespace HostMaster.Shared.Resources {
         public static string SelectFile {
             get {
                 return ResourceManager.GetString("SelectFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single Room.
+        /// </summary>
+        public static string SingleRoom {
+            get {
+                return ResourceManager.GetString("SingleRoom", resourceCulture);
             }
         }
         
