@@ -2,6 +2,28 @@
 
 <PageTitle>@Localizer["Home"]</PageTitle>
 
-<h1>@Localizer["Title"]</h1>
+<h1>@Localizer["AccomodationName"]</h1>
 
-<h2>@Localizer["Subtitle"]</h2>
+<h2>@Localizer["AccommodationSlogan"]</h2>
+
+
+<MudCarousel Class="mud-width-full" Style="height:600px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+    <MudCarouselItem Transition="transition" Color="@Color.Transparent">
+                
+        <div class="d-flex" style="height:100%; display: flex; justify-content: center; align-items: center;">
+            <MudImage Src="images/room.jpg" Class="mb-3" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition" Color="@Color.Transparent">
+
+        <div class="d-flex" style="height:100%; display: flex; justify-content: center; align-items: center;">
+            <MudImage Src="images/lobby.jpg" Class="mb-3" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition" Color="@Color.Transparent">
+
+        <div class="d-flex" style="height:100%; display: flex; justify-content: center; align-items: center;">
+            <MudImage Src="images/pool.jpg" Class="mb-3" />
+        </div>
+    </MudCarouselItem>
+</MudCarousel>

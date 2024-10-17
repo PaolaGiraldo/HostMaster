@@ -289,7 +289,7 @@
   <data name="ERR_RES003" xml:space="preserve">
     <value>The Reservation Id is not valid</value>
   </data>
-  <data name="ERR_RES004" xml:space="preserve">
+  <data name="EndDateGreater" xml:space="preserve">
     <value>The end date of the reservation must be greater than the start date.</value>
   </data>
   <data name="ERR_RES005" xml:space="preserve">
@@ -514,10 +514,49 @@
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
-  <data name="Users_Duplicate[1]" xml:space="preserve">
-    <value>Users</value>
-  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current Password</value>
+  </data>
+  <data name="AccomodationName" xml:space="preserve">
+    <value>Hotel Name</value>
+  </data>
+  <data name="AccommodationSlogan" xml:space="preserve">
+    <value>A charming hotel with history and personality.</value>
+  </data>
+  <data name="SelectDateRange" xml:space="preserve">
+    <value>Select Date Range</value>
+  </data>
+  <data name="ValidGuestsNumber" xml:space="preserve">
+    <value>{0} must be greater than 0.</value>
+  </data>
+  <data name="CustomerDocument" xml:space="preserve">
+    <value>Customer document</value>
+  </data>
+  <data name="StartDateLess" xml:space="preserve">
+    <value>The start date of the reservation must be less than the end date.</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ReservationForm" xml:space="preserve">
+    <value>Reservation Form</value>
+  </data>
+  <data name="AccommodationsForm" xml:space="preserve">
+    <value>Accommodations Form</value>
+  </data>
+  <data name="RegisterPageName" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="EditUserPageName" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="CountryForm" xml:space="preserve">
+    <value>Country Form</value>
+  </data>
+  <data name="RoomForm" xml:space="preserve">
+    <value>Room Form</value>
+  </data>
+  <data name="RoomTypeForm" xml:space="preserve">
+    <value>Room Type Form</value>
   </data>
 </root>

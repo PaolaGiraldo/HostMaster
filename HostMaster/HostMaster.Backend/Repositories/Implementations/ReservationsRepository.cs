@@ -85,8 +85,8 @@ public class ReservationsRepository : GenericRepository<Reservation>, IReservati
 
         var reservation = new Reservation
         {
-            StartDate = reservationDTO.StartDate,
-            EndDate = reservationDTO.EndDate,
+            StartDate = reservationDTO.StartDate ?? DateTime.Now,
+            EndDate = reservationDTO.EndDate ?? DateTime.Now,
             ReservationState = reservationDTO.ReservationState,
             RoomId = reservationDTO.RoomId,
             NumberOfGuests = reservationDTO.NumberOfGuests,
@@ -162,8 +162,8 @@ public class ReservationsRepository : GenericRepository<Reservation>, IReservati
             };
         }*/
 
-        currentReservation.StartDate = reservationDTO.StartDate;
-        currentReservation.EndDate = reservationDTO.EndDate;
+        currentReservation.StartDate = reservationDTO.StartDate ?? DateTime.Now;
+        currentReservation.EndDate = reservationDTO.EndDate ?? DateTime.Now;
         currentReservation.RoomId = reservationDTO.RoomId;
         currentReservation.NumberOfGuests = reservationDTO.NumberOfGuests;
         currentReservation.AccommodationId = reservationDTO.AccommodationId;

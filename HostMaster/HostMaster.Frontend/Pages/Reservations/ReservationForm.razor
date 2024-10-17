@@ -1,28 +1,47 @@
 ﻿﻿<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation" />
-
+<PageTitle>@Localizer["ReservationForm"]</PageTitle>
 <EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
-    <MudTextField  Label="@Localizer["Accommodation"]"
-                  @bind-Value="@ReservationDTO.AccommodationId"
-                  For="@(() => ReservationDTO.AccommodationId)"
-                  Class="mb-4" />
 
-    <MudTextField Label="@Localizer["RoomId"]"
-                  @bind-Value="@ReservationDTO.RoomId"
-                  For="@(() => ReservationDTO.RoomId)"
-                  Class="mb-4" />
+    <MudAutocomplete T="Accommodation"
+                     Label=@Localizer["Accommodation"]
+                     Placeholder=@Localizer["SelectAnAccommodation"]
+                     SearchFunc="SearchAccommodation"
+                     Value="selectedAccommodation"
+                     ValueChanged="AccommodationChanged"
+                     ToStringFunc="@(e=> e==null?null : $"{e.Name}")"
+                     Class="mb-4">
+        <ItemTemplate Context="itemContext">
+            @itemContext.Name
+        </ItemTemplate>
+    </MudAutocomplete>
 
-    <MudTextField Label="@Localizer["StartDate"]"
-                  @bind-Value="@ReservationDTO.StartDate"
+    <MudAutocomplete T="Room"
+                     Label=@Localizer["Room"]
+                     Placeholder=@Localizer["SelectARoom"]
+                     SearchFunc="SearchRoom"
+                     Value="selectedRoom"
+                     ValueChanged="RoomChanged"
+                     ToStringFunc="@(e=> e==null?null : $"{e.RoomNumber}")"
+                     Class="mb-4">
+        <ItemTemplate Context="itemContext">
+            @itemContext.RoomNumber
+        </ItemTemplate>
+    </MudAutocomplete>
+
+
+    <MudDatePicker Label="@Localizer["StartDate"]"
+                  @bind-Date ="@ReservationDTO.StartDate"
                   For="@(() => ReservationDTO.StartDate)"
                   Class="mb-4" />
 
-    <MudTextField Label="@Localizer["EndDate"]"
-                  @bind-Value="@ReservationDTO.EndDate"
+    <MudDatePicker Label="@Localizer["EndDate"]"
+                  @bind-Date="@ReservationDTO.EndDate"
                   For="@(() => ReservationDTO.EndDate)"
                   Class="mb-4" />
 
-    <MudTextField Label="@Localizer["NumberOfGuests"]"
+    <MudNumericField Label="@Localizer["NumberOfGuests"]"
+                     Min="1" Max="100"
                   @bind-Value="@ReservationDTO.NumberOfGuests"
                   For="@(() => ReservationDTO.NumberOfGuests)"
                   Class="mb-4" />

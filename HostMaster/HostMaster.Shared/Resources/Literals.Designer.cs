@@ -124,6 +124,33 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accommodations Form.
+        /// </summary>
+        public static string AccommodationsForm {
+            get {
+                return ResourceManager.GetString("AccommodationsForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A charming hotel with history and personality..
+        /// </summary>
+        public static string AccommodationSlogan {
+            get {
+                return ResourceManager.GetString("AccommodationSlogan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel Name.
+        /// </summary>
+        public static string AccomodationName {
+            get {
+                return ResourceManager.GetString("AccomodationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
         public static string Actions {
@@ -277,6 +304,15 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countries.
         /// </summary>
         public static string Countries {
@@ -291,6 +327,15 @@ namespace HostMaster.Shared.Resources {
         public static string Country {
             get {
                 return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country Form.
+        /// </summary>
+        public static string CountryForm {
+            get {
+                return ResourceManager.GetString("CountryForm", resourceCulture);
             }
         }
         
@@ -318,6 +363,15 @@ namespace HostMaster.Shared.Resources {
         public static string Customer {
             get {
                 return ResourceManager.GetString("Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer document.
+        /// </summary>
+        public static string CustomerDocument {
+            get {
+                return ResourceManager.GetString("CustomerDocument", resourceCulture);
             }
         }
         
@@ -403,6 +457,15 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit user.
+        /// </summary>
+        public static string EditUserPageName {
+            get {
+                return ResourceManager.GetString("EditUserPageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit User Profile.
         /// </summary>
         public static string EditUserProfile {
@@ -439,6 +502,15 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The end date of the reservation must be greater than the start date..
+        /// </summary>
+        public static string EndDateGreater {
+            get {
+                return ResourceManager.GetString("EndDateGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Room Id is not valid.
         /// </summary>
         public static string ERR_RES001 {
@@ -462,15 +534,6 @@ namespace HostMaster.Shared.Resources {
         public static string ERR_RES003 {
             get {
                 return ResourceManager.GetString("ERR_RES003", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The end date of the reservation must be greater than the start date..
-        /// </summary>
-        public static string ERR_RES004 {
-            get {
-                return ResourceManager.GetString("ERR_RES004", resourceCulture);
             }
         }
         
@@ -988,6 +1051,15 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string RegisterPageName {
+            get {
+                return ResourceManager.GetString("RegisterPageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field {0} is required..
         /// </summary>
         public static string RequiredField {
@@ -1011,6 +1083,15 @@ namespace HostMaster.Shared.Resources {
         public static string Reservation {
             get {
                 return ResourceManager.GetString("Reservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation Form.
+        /// </summary>
+        public static string ReservationForm {
+            get {
+                return ResourceManager.GetString("ReservationForm", resourceCulture);
             }
         }
         
@@ -1047,6 +1128,15 @@ namespace HostMaster.Shared.Resources {
         public static string Room {
             get {
                 return ResourceManager.GetString("Room", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Form.
+        /// </summary>
+        public static string RoomForm {
+            get {
+                return ResourceManager.GetString("RoomForm", resourceCulture);
             }
         }
         
@@ -1092,6 +1182,15 @@ namespace HostMaster.Shared.Resources {
         public static string RoomType {
             get {
                 return ResourceManager.GetString("RoomType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Type Form.
+        /// </summary>
+        public static string RoomTypeForm {
+            get {
+                return ResourceManager.GetString("RoomTypeForm", resourceCulture);
             }
         }
         
@@ -1177,6 +1276,15 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Date Range.
+        /// </summary>
+        public static string SelectDateRange {
+            get {
+                return ResourceManager.GetString("SelectDateRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a file....
         /// </summary>
         public static string SelectFile {
@@ -1218,6 +1326,15 @@ namespace HostMaster.Shared.Resources {
         public static string StartDate {
             get {
                 return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The start date of the reservation must be less than the end date..
+        /// </summary>
+        public static string StartDateLess {
+            get {
+                return ResourceManager.GetString("StartDateLess", resourceCulture);
             }
         }
         
@@ -1294,15 +1411,6 @@ namespace HostMaster.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Users.
-        /// </summary>
-        public static string Users_Duplicate_1_ {
-            get {
-                return ResourceManager.GetString("Users_Duplicate[1]", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to User type.
         /// </summary>
         public static string UserType {
@@ -1317,6 +1425,15 @@ namespace HostMaster.Shared.Resources {
         public static string ValidEmail {
             get {
                 return ResourceManager.GetString("ValidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be greater than 0..
+        /// </summary>
+        public static string ValidGuestsNumber {
+            get {
+                return ResourceManager.GetString("ValidGuestsNumber", resourceCulture);
             }
         }
         
